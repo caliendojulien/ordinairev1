@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block header %}
+    <h1>Ajouter un stagiaire</h1>
+{% endblock %}
+
+{% block body %}
+    <div class="grill">
+        {{ form_start(ajoutStagiaireForm) }}
+        <div class="grill">
+            <div class="input">
+                {{ form_label(ajoutStagiaireForm.grade) }}
+                {{ form_widget(ajoutStagiaireForm.grade) }}
+            </div>
+            <div class="input">
+                {{ form_label(ajoutStagiaireForm.nom) }}
+                {{ form_widget(ajoutStagiaireForm.nom) }}
+            </div>
+            <div class="input">
+                {{ form_label(ajoutStagiaireForm.prenom) }}
+                {{ form_widget(ajoutStagiaireForm.prenom) }}
+            </div>
+            <div class="input">
+                {{ form_label(ajoutStagiaireForm.compagnie) }}
+                {{ form_widget(ajoutStagiaireForm.compagnie) }}
+            </div>
+            <div class="liste">
+                {{ form_label(ajoutStagiaireForm.stage) }}
+                {{ form_widget(ajoutStagiaireForm.stage) }}
+            </div>
+
+
+        </div>
+        {{ form_end(ajoutStagiaireForm) }}
+    </div>
+{% endblock %}
