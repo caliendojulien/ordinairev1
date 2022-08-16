@@ -25,14 +25,6 @@ class Repas
     #[ORM\Column]
     private ?bool $soir = null;
 
-    #[ORM\ManyToMany(targetEntity: user::class, inversedBy: 'repas')]
-    private Collection $id_user;
-
-    public function __construct()
-    {
-        $this->id_user = new ArrayCollection();
-    }
-
 
     public function getDate(): ?\DateTimeInterface
     {
@@ -66,30 +58,6 @@ class Repas
     public function setSoir(bool $soir): self
     {
         $this->soir = $soir;
-
-        return $this;
-    }
-
-    /**
-     * @return Collection<int, User>
-     */
-    public function getIdUser(): Collection
-    {
-        return $this->id_user;
-    }
-
-    public function addIdUser(User $idUser): self
-    {
-        if (!$this->id_user->contains($idUser)) {
-            $this->id_user->add($idUser);
-        }
-
-        return $this;
-    }
-
-    public function removeIdUser(User $idUser): self
-    {
-        $this->id_user->removeElement($idUser);
 
         return $this;
     }
