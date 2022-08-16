@@ -1,0 +1,18 @@
+.input {
+    display: flex;
+    flex-direction: column;
+    width: 25%;
+}
+
+.grill {
+    display: grid;
+    grid-area: 1/2/1/1;
+}
+
+.liste {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    width: 25%;
+    height: 25%;
+}
