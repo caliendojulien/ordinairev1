@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\UtilisateursRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: UtilisateursRepository::class)]
@@ -27,6 +29,17 @@ class Utilisateurs
 
     #[ORM\Column]
     private ?bool $isAdmin = null;
+
+    #[ORM\ManyToMany(targetEntity: Repas::class, mappedBy: 'id_utilisateur')]
+    private Collection $repas;
+
+    #[ORM\ManyToOne(inversedBy: 'utilisateurs')]
+    private ?Stages $stage = null;
+
+    public function __construct()
+    {
+        $this->repas = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -89,6 +102,45 @@ class Utilisateurs
     public function setIsAdmin(bool $isAdmin): self
     {
         $this->isAdmin = $isAdmin;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Repas>
+     */
+    public function getRepas(): Collection
+    {
+        return $this->repas;
+    }
+
+    public function addRepa(Repas $repa): self
+    {
+        if (!$this->repas->contains($repa)) {
+            $this->repas->add($repa);
+            $repa->addIdUtilisateur($this);
+        }
+
+        return $this;
+    }
+
+    public function removeRepa(Repas $repa): self
+    {
+        if ($this->repas->removeElement($repa)) {
+            $repa->removeIdUtilisateur($this);
+        }
+
+        return $this;
+    }
+
+    public function getStage(): ?Stages
+    {
+        return $this->stage;
+    }
+
+    public function setStage(?Stages $stage): self
+    {
+        $this->stage = $stage;
 
         return $this;
     }
