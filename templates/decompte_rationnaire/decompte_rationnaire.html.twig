@@ -1,0 +1,59 @@
+{% extends 'base.html.twig' %}
+
+{% block css %}
+    <link rel="stylesheet" href="{{ asset('CSS/decompteRationnaire.css') }}">
+{% endblock %}
+{% block js %}
+    <script src="{{ asset('js/decompteRationnaire.js') }}"></script>
+{% endblock %}
+
+
+{% block body %}
+    <div id="titre">
+        <h1>Decompte rationnaire</h1>
+    </div>
+    <div>
+        <label for="choixFormation">Formation</label>
+        <select name="choixFormation" id="choixFormation" autofocus>
+            <option value="">--Coisir une formation--</option>
+            <option value="">mettre des formation dans la liste</option>
+        </select>
+    </div>
+    <div id="numSemaine">
+        <img src="{{ asset('CSS/media/fleche-fine-contour-vers-la-gauche.png') }}" alt="" id="g" onclick="moins()">
+        <div>
+            <h3>Semaine n° <span id="numero">{{ "now" | date('W') }}</span></h3>
+        </div>
+        <img src="{{ asset('CSS/media/fleche-fine-contour-vers-la-droite (1).png') }}" alt="" id="d" onclick="plus()">
+    </div>
+    <table>
+        <thead>
+        <tr>
+            <th></th>
+            <th colspan="2">Lundi</th>
+            <th colspan="2">Mardi</th>
+            <th colspan="2">Mercredi</th>
+            <th colspan="2">Jeudi</th>
+            <th colspan="2">Vendredi</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <th>Nom du Pax</th>
+            <td>Midi</td>
+            <td>Soir</td>
+            <td>Midi</td>
+            <td>Soir</td>
+            <td>Midi</td>
+            <td>Soir</td>
+            <td>Midi</td>
+            <td>Soir</td>
+            <td>Midi</td>
+            <td>Soir</td>
+        </tr>
+        </tbody>
+    </table>
+
+    <script></script>
+
+{% endblock %}
