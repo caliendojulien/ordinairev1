@@ -29,7 +29,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     #[ORM\ManyToOne(inversedBy: 'users')]
     #[ORM\JoinColumn(nullable: false)]
-    private ?stages $stage = null;
+    private ?Stages $stage = null;
 
     public function getId(): ?int
     {
@@ -55,7 +55,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      */
     public function getUserIdentifier(): string
     {
-        return (string) $this->email;
+        return (string)$this->email;
     }
 
     /**
@@ -101,12 +101,12 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         // $this->plainPassword = null;
     }
 
-    public function getStage(): ?stages
+    public function getStage(): ?Stages
     {
         return $this->stage;
     }
 
-    public function setStage(?stages $stage): self
+    public function setStage(?Stages $stage): self
     {
         $this->stage = $stage;
 

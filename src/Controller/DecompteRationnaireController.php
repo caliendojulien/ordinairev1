@@ -8,12 +8,8 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class DecompteRationnaireController extends AbstractController
 {
-    #[Route('/decompte-rationnaire/{id}', name: 'index_decompte_rationnaire')]
-    public function index(
-        int $id,
-
-
-    ): Response
+    #[Route('/decompte-rationnaire', name: 'index_decompte_rationnaire')]
+    public function index(): Response
     {
         return $this->render('decompte_rationnaire/decompte_rationnaire.html.twig', [
             'controller_name' => 'DecompteRationnaireController',
