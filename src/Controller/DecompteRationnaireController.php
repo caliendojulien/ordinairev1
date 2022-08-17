@@ -14,12 +14,27 @@ class DecompteRationnaireController extends AbstractController
     public function index(
         $id,
         StagesRepository $stagesRepository
-
     ): Response
     {
-        $stage = $stagesRepository->findOneBy(["id" => $id]);
+        $listeStage = $stagesRepository->findAll();
+
+
+        $Lundi = strtotime('next monday +2 weeks');
+        $Mardi = strtotime('next monday +2 weeks +1 day');
+        $Mercredi = strtotime('next monday +2 weeks +2 days');
+        $Jeudi = strtotime('next monday +2 weeks +3 days');
+        $Vendredi = strtotime('next monday +2 weeks +4 days');
+
+
         return $this->render('decompte_rationnaire/decompte_rationnaire.html.twig',
-            compact('stage')
+            [
+                'Lundi' => $Lundi,
+                'Mardi' => $Mardi,
+                'Mercredi' => $Mercredi,
+                'Jeudi' => $Jeudi,
+                'Vendredi' => $Vendredi,
+                'listeStage' => $listeStage
+            ]
         );
     }
 }
