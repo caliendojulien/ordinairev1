@@ -8,12 +8,11 @@
     <link rel="stylesheet" href="{{ asset('CSS/style.css') }}">
     <link rel="stylesheet" href="{{ asset('CSS/ajouterStagiaire.css') }}">
     <link rel="stylesheet" href="{{ asset('CSS/login.css') }}">
+    {% block css %}
+    {% endblock %}
+    {% block js %}
+    {% endblock %}
 </head>
-
-{% block header %}
-{% endblock %}
-
-
 <body>
 <header>
     <div id="logoHead">
@@ -30,6 +29,8 @@
             <a href="{{ path('login') }}"><img id="deconnexionIcon" src="{{ asset('CSS/media/power-off-solid.png') }}" alt="deconnexion"></a>
         </div>
     </nav>
+    {% block header %}
+    {% endblock %}
 </header>
 <main>
     {% block main %}{% endblock %}
