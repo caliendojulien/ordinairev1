@@ -12,20 +12,11 @@
     <div id="titre">
         <h1>Decompte rationnaire</h1>
     </div>
-    <div>
-        <label for="choixFormation">Formation</label>
-        <select name="choixFormation" id="choixFormation" autofocus>
-            <option value=""></option>
-            {% for listeStage in stage %}
-                <option value="">{{ stage.nom }}</option>
-            {% endfor %}
 
-        </select>
-    </div>
     <div id="numSemaine">
         <img src="{{ asset('CSS/media/fleche-fine-contour-vers-la-gauche.png') }}" alt="" id="g" onclick="moins()">
         <div>
-            <h3>Semaine n° <span id="numero">{{ "now" | date('W') }}</span></h3>
+            <h3>Semaine n° <span id="numero">{{ "now" | date('W')+ 2 }}</span></h3>
         </div>
         <img src="{{ asset('CSS/media/fleche-fine-contour-vers-la-droite (1).png') }}" alt="" id="d" onclick="plus()">
     </div>
@@ -33,16 +24,16 @@
         <thead>
         <tr>
             <th></th>
-            <th colspan="2">Lundi</th>
-            <th colspan="2">Mardi</th>
-            <th colspan="2">Mercredi</th>
-            <th colspan="2">Jeudi</th>
-            <th colspan="2">Vendredi</th>
+            <th colspan="2">{{ Lundi | date ("d-m-Y") }}</th>
+            <th colspan="2">{{ Mardi | date ("d-m-Y") }}</th>
+            <th colspan="2">{{ Mercredi | date ("d-m-Y") }}</th>
+            <th colspan="2">{{ Jeudi | date ("d-m-Y") }}</th>
+            <th colspan="2">{{ Vendredi | date ("d-m-Y") }}</th>
         </tr>
         </thead>
         <tbody>
         <tr>
-            <th>Nom du Pax</th>
+            <th></th>
             <td>Midi</td>
             <td>Soir</td>
             <td>Midi</td>
@@ -54,12 +45,11 @@
             <td>Midi</td>
             <td>Soir</td>
         </tr>
-        <tr>
-            {% for utilisateur in stage.user %}
-                <td>{{ utilisateur.nom }}</td>
-            {% endfor %}
-
-        </tr>
+        {% for stage in listeStage %}
+            <tr>
+                <th>{{ stage.nom }}</th>
+            </tr>
+        {% endfor %}
         </tbody>
     </table>
 
