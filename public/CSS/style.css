@@ -38,17 +38,23 @@ body {
 
 nav {
     display: flex;
-    justify-content: end;
+    justify-content: space-between;
     align-content: center;
     background-color: #323642;
     height: 70px;
     margin: 0;
 }
 
-#divDeconnexionIcon {
+.elementNav {
     display: flex;
     align-content: center;
     align-items: center;
+}
+
+#bonjourCDS {
+    color: #F5F5F5;
+    font-size: 20px;
+    margin-left: 20px;
 }
 
 #deconnexionIcon {
@@ -58,7 +64,6 @@ nav {
     padding: 10px;
     border-radius: 10px;
     display: flex;
-
 }
 
 #groupElementFooter {
