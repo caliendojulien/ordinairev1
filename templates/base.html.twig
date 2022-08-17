@@ -12,11 +12,6 @@
     {% block js %}
     {% endblock %}
 </head>
-
-{% block header %}
-{% endblock %}
-
-
 <body>
 <header>
     <div id="logoHead">
@@ -31,6 +26,8 @@
     <nav>
 
     </nav>
+    {% block header %}
+    {% endblock %}
 </header>
 <main>
     {% block main %}{% endblock %}

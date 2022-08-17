@@ -24,11 +24,11 @@ class AjouterStagiaireController extends AbstractController
         $ajoutStagiaire = new Utilisateurs();
         $ajoutStagiaireForm = $this->createForm(AjoutStagiaireType::class, $ajoutStagiaire);
         $ajoutStagiaireForm->handleRequest($request);
+        dump($ajoutStagiaire);
         if ($ajoutStagiaireForm->isSubmitted() && $ajoutStagiaireForm->isValid()) {
             $ajoutStagiaire->setIsAdmin(false);
             $em->persist($ajoutStagiaire);
             $em->flush();
-            return $this->redirectToRoute();
         }
         return $this->renderForm('ajouter_stagiaire/ajouter.html.twig', compact('ajoutStagiaireForm'));
     }
