@@ -5,6 +5,35 @@
 {% endblock %}
 
 {% block body %}
+    <div class="formAll">
+        {{ form_start(ajoutStagiaireForm) }}
+        <div class="label">
+            <div class="form">
+                {{ form_label(ajoutStagiaireForm.grade) }}
+                {{ form_widget(ajoutStagiaireForm.grade) }}
+            </div>
+            <div class="form">
+                {{ form_label(ajoutStagiaireForm.compagnie) }}
+                {{ form_widget(ajoutStagiaireForm.compagnie) }}
+            </div>
+        </div>
+        <div class="label">
+            <div class="form">
+                {{ form_label(ajoutStagiaireForm.nom) }}
+                {{ form_widget(ajoutStagiaireForm.nom) }}
+            </div>
+            <div class="form">
+                {{ form_label(ajoutStagiaireForm.stage) }}
+                {{ form_widget(ajoutStagiaireForm.stage) }}
+            </div>
+        </div>
+        <div class="input">
+            {{ form_label(ajoutStagiaireForm.prenom) }}
+            {{ form_widget(ajoutStagiaireForm.prenom) }}
+        </div>
+        {{ form_end(ajoutStagiaireForm) }}
+    </div>
+
     <div class="grill">
         {{ form_start(ajoutStagiaireForm) }}
         <div class="grill">
