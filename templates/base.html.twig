@@ -8,11 +8,6 @@
     <link rel="stylesheet" href="{{ asset('CSS/style.css') }}">
     <link rel="stylesheet" href="{{ asset('CSS/ajouterStagiaire.css') }}">
 </head>
-
-{% block header %}
-{% endblock %}
-
-
 <body>
 <header>
     <div id="logoHead">
@@ -27,6 +22,8 @@
     <nav>
 
     </nav>
+    {% block header %}
+    {% endblock %}
 </header>
 <main>
     {% block main %}{% endblock %}
