@@ -19,14 +19,22 @@ class Repas
     #[ORM\Column(type: Types::DATE_MUTABLE)]
     private ?\DateTimeInterface $date = null;
 
-    #[ORM\Column]
-    private ?bool $midi = null;
-
-    #[ORM\Column]
-    private ?bool $soir = null;
 
     #[ORM\ManyToMany(targetEntity: Utilisateurs::class, inversedBy: 'repas')]
     private Collection $utilisateurs;
+
+    #[ORM\Column(length: 255)]
+    private ?string $nomStage = null;
+
+    #[ORM\Column]
+    private ?int $nbMangeantMidi = null;
+
+    #[ORM\Column]
+    private ?int $nbMangeantSoir = null;
+
+    #[ORM\ManyToOne(inversedBy: 'StageRepas')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Stages $stages = null;
 
     public function __construct()
     {
@@ -46,29 +54,6 @@ class Repas
         return $this;
     }
 
-    public function isMidi(): ?bool
-    {
-        return $this->midi;
-    }
-
-    public function setMidi(bool $midi): self
-    {
-        $this->midi = $midi;
-
-        return $this;
-    }
-
-    public function isSoir(): ?bool
-    {
-        return $this->soir;
-    }
-
-    public function setSoir(bool $soir): self
-    {
-        $this->soir = $soir;
-
-        return $this;
-    }
 
     /**
      * @return Collection<int, Utilisateurs>
@@ -90,6 +75,54 @@ class Repas
     public function removeUser(Utilisateurs $utilisateur): self
     {
         $this->utilisateurs->removeElement($utilisateur);
+
+        return $this;
+    }
+
+    public function getNomStage(): ?string
+    {
+        return $this->nomStage;
+    }
+
+    public function setNomStage(string $nomStage): self
+    {
+        $this->nomStage = $nomStage;
+
+        return $this;
+    }
+
+    public function getNbMangeantMidi(): ?int
+    {
+        return $this->nbMangeantMidi;
+    }
+
+    public function setNbMangeantMidi(int $nbMangeantMidi): self
+    {
+        $this->nbMangeantMidi = $nbMangeantMidi;
+
+        return $this;
+    }
+
+    public function getNbMangeantSoir(): ?int
+    {
+        return $this->nbMangeantSoir;
+    }
+
+    public function setNbMangeantSoir(int $nbMangeantSoir): self
+    {
+        $this->nbMangeantSoir = $nbMangeantSoir;
+
+        return $this;
+    }
+
+    public function getStages(): ?Stages
+    {
+        return $this->stages;
+    }
+
+    public function setStages(?Stages $stages): self
+    {
+        $this->stages = $stages;
 
         return $this;
     }
