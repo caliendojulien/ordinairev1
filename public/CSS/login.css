@@ -1,0 +1,52 @@
+main {
+
+    color: #323544;
+}
+
+#gridH1parent {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: 1fr;
+    grid-column-gap: 0;
+    grid-row-gap: 0;
+}
+
+#gridVide1 { grid-area: 1 / 1 / 2 / 2; }
+
+#gridH1 {
+    grid-area: 1 / 2 / 2 / 5;
+}
+#gridVide2 { grid-area: 1 / 5 / 2 / 6; }
+
+#formLabelInput {
+    margin: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: start;
+    align-content: center;
+    font-size: 25px;
+}
+
+.elementsForm {
+    margin: 5px;
+}
+
+#divBouttonConnexion {
+    margin-top: 50px;
+    display: flex;
+    justify-content: center;
+}
+#bouttonConnexion {
+    font-size: 15px;
+    border-radius: 15px;
+    padding: 10px;
+    background-color: #387796;
+    border: 1px solid #0082b0;
+    color: #F5F5F5;
+}
+
+input {
+    background-color: rgba(217, 217, 217, 0.37);
+    border-color: rgba(0, 0, 0, 0.5);
+}

@@ -1,5 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
+
 body {
     margin: 0;
+    height: 100vh;
+    font-family: 'Inter', sans-serif;
 }
 
 #logoHead {
@@ -33,9 +37,28 @@ body {
 }
 
 nav {
+    display: flex;
+    justify-content: end;
+    align-content: center;
     background-color: #323642;
-    height: 100px;
+    height: 70px;
     margin: 0;
+}
+
+#divDeconnexionIcon {
+    display: flex;
+    align-content: center;
+    align-items: center;
+}
+
+#deconnexionIcon {
+    height: 30px;
+    margin-right: 20px;
+    background-color: #387796;
+    padding: 10px;
+    border-radius: 10px;
+    display: flex;
+
 }
 
 #groupElementFooter {
