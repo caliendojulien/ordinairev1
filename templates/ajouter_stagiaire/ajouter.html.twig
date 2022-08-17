@@ -5,29 +5,14 @@
 {% endblock %}
 
 {% block main %}
-    <div class="formAll">
-        {{ form_start(ajoutStagiaireForm) }}
-        <div class="label">
-            <div class="form">
-                {{ form_label(ajoutStagiaireForm.grade) }}
-                {{ form_widget(ajoutStagiaireForm.grade) }}
-            </div>
-            <div class="form">
-                {{ form_label(ajoutStagiaireForm.compagnie) }}
-                {{ form_widget(ajoutStagiaireForm.compagnie) }}
-            </div>
-        </div>
-        <div class="label">
-            <div class="form">
-                {{ form_label(ajoutStagiaireForm.nom) }}
-                {{ form_widget(ajoutStagiaireForm.nom) }}
-            </div>
-        </div>
-        <div class="input">
-            {{ form_label(ajoutStagiaireForm.prenom) }}
-            {{ form_widget(ajoutStagiaireForm.prenom) }}
-        </div>
-        {{ form_end(ajoutStagiaireForm) }}
-    </div>
 
+    {{ form_start(registrationForm) }}
+    {{ form_row(registrationForm.email) }}
+    {#  {{ form_row(registrationForm.plainPassword, {label: 'Password'}) }} #}
+    {{ form_row(registrationForm.grade) }}
+    {{ form_row(registrationForm.nom) }}
+    {{ form_row(registrationForm.prenom) }}
+    {{ form_row(registrationForm.compagnie) }}
+    <button type="submit" class="btn">Register</button>
+    {{ form_end(registrationForm) }}
 {% endblock %}

@@ -24,6 +24,10 @@
         <div id="divLogoVide"></div>
     </div>
     <nav>
+        <div id="divDeconnexionIcon">
+            <a href="{{ path('app_logout') }}"><img id="deconnexionIcon"
+                                                    src="{{ asset('CSS/media/power-off-solid.png') }}"
+                                                    alt="deconnexion"></a>
         {% if app.user %}
             <div class="elementNav">
                 <p id="bonjourCDS">Bonjour {{ app.user.email }}</p>
