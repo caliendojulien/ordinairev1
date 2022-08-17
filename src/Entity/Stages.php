@@ -51,7 +51,7 @@ class Stages
         return $this->user;
     }
 
-    public function addUtilisateur(Utilisateurs $user): self
+    public function addUser(Utilisateurs $user): self
     {
         if (!$this->user->contains($user)) {
             $this->user->add($user);
@@ -61,7 +61,7 @@ class Stages
         return $this;
     }
 
-    public function removeUtilisateur(Utilisateurs $user): self
+    public function removeUser(Utilisateurs $user): self
     {
         if ($this->user->removeElement($user)) {
             // set the owning side to null (unless already changed)
