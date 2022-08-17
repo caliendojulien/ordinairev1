@@ -3,11 +3,46 @@
     <head>
         <meta charset="UTF-8">
         <title>{% block title %}Welcome!{% endblock %}</title>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}Décompte rationnaire{% endblock %}</title>
+        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
+        <link rel="stylesheet" href="{{ asset('CSS/style.css') }}">
         <link rel="stylesheet" href="{{ asset('CSS/ajouterStagiaire.css') }}">
     </head>
     <body>
     {% block header %}
     {% endblock %}
         {% block body %}{% endblock %}
+    </head>
+    <body>
+        <header>
+            <div id="logoHead">
+                <div id="divMinarmHeader">
+                    <img id="minarmHeader" src="{{ asset('CSS/media/minarm.png') }}" alt="minarm">
+                </div>
+                <div id="divCmfp">
+                    <img id="cmfp" src="{{ asset('CSS/media/cmfp.png') }}" alt="cmfp">
+                </div>
+                <div id="divLogoVide"></div>
+            </div>
+            <nav>
+
+            </nav>
+        </header>
+        <main>
+        {% block main %}{% endblock %}
+        </main>
+        <footer>
+            <div id="groupElementFooter">
+                <div id="divBackgroundEF1"> </div>
+                <div id="divBackgroundEF2"> </div>
+            </div>
+            <nav class="nav2"></nav>
+            <div id="divMinarmFooter">
+                <img id="minarmFooter" src="{{ asset('CSS/media/minarm.png') }}" alt="minarm">
+            </div>
+        </footer>
     </body>
 </html>

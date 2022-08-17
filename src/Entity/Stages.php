@@ -18,12 +18,12 @@ class Stages
     #[ORM\Column(length: 255)]
     private ?string $nom = null;
 
-    #[ORM\OneToMany(mappedBy: 'stage', targetEntity: Utilisateurs::class)]
-    private Collection $utilisateurs;
+    #[ORM\OneToMany(mappedBy: 'stage', targetEntity: user::class)]
+    private Collection $user;
 
     public function __construct()
     {
-        $this->utilisateurs = new ArrayCollection();
+        $this->user = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -44,29 +44,29 @@ class Stages
     }
 
     /**
-     * @return Collection<int, Utilisateurs>
+     * @return Collection<int, User>
      */
-    public function getUtilisateurs(): Collection
+    public function getUser(): Collection
     {
-        return $this->utilisateurs;
+        return $this->user;
     }
 
-    public function addUtilisateur(Utilisateurs $utilisateur): self
+    public function addUtilisateur(User $user): self
     {
-        if (!$this->utilisateurs->contains($utilisateur)) {
-            $this->utilisateurs->add($utilisateur);
-            $utilisateur->setStage($this);
+        if (!$this->user->contains($user)) {
+            $this->user->add($user);
+            $user->setStage($this);
         }
 
         return $this;
     }
 
-    public function removeUtilisateur(Utilisateurs $utilisateur): self
+    public function removeUtilisateur(User $user): self
     {
-        if ($this->utilisateurs->removeElement($utilisateur)) {
+        if ($this->user->removeElement($user)) {
             // set the owning side to null (unless already changed)
-            if ($utilisateur->getStage() === $this) {
-                $utilisateur->setStage(null);
+            if ($user->getStage() === $this) {
+                $user->setStage(null);
             }
         }
 
