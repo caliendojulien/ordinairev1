@@ -26,7 +26,7 @@ class AjouterStagiaireController extends AbstractController
         $ajoutStagiaireForm->handleRequest($request);
         dump($ajoutStagiaire);
         if ($ajoutStagiaireForm->isSubmitted() && $ajoutStagiaireForm->isValid()) {
-            $ajoutStagiaire->setIsAdmin(false);
+            $ajoutStagiaire->setIsAdmin(true);
             $em->persist($ajoutStagiaire);
             $em->flush();
         }

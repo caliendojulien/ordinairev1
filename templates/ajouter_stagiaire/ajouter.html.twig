@@ -1,7 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block header %}
-    <h1 class="titre_stagiaire">Ajouter un stagiaire</h1>
+    <h1 class="titre_stagiaire">Ajouter un Chef de section</h1>
 {% endblock %}
 
 {% block main %}
@@ -21,10 +21,6 @@
             <div class="form">
                 {{ form_label(ajoutStagiaireForm.nom) }}
                 {{ form_widget(ajoutStagiaireForm.nom) }}
-            </div>
-            <div class="form">
-                {{ form_label(ajoutStagiaireForm.stage) }}
-                {{ form_widget(ajoutStagiaireForm.stage) }}
             </div>
         </div>
         <div class="input">

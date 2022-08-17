@@ -14,7 +14,7 @@
         <div id="gridH1parent">
             <div id="gridVide1"></div>
             <div id="gridH1"><h1 class="h3 mb-3 font-weight-normal">Connexion</h1></div>
-            <div id="gridVide2"> </div>
+            <div id="gridVide2"></div>
         </div>
         <div>
             <div id="formLabelInput">
@@ -22,18 +22,19 @@
                     <label for="inputMail">E-mail</label>
                 </div>
                 <div class="elementsForm">
-                    <input type="email" value="{{ last_username }}" name="email" id="inputMail" class="form-control" autocomplete="mail" required autofocus>
+                    <input type="email" value="{{ last_username }}" name="email" id="inputMail" class="form-control"
+                           autocomplete="mail" required autofocus>
                 </div>
                 <div class="elementsForm">
                     <label for="inputMotDePasse">Mot de passe</label>
                 </div>
                 <div class="elementsForm">
-                    <input type="password" name="password" id="inputMotDePasse" class="form-control" autocomplete="current-motDePasse" required>
+                    <input type="password" name="password" id="inputMotDePasse" class="form-control"
+                           autocomplete="current-motDePasse" required>
                 </div>
                 <input type="hidden" name="_csrf_token"
                        value="{{ csrf_token('authenticate') }}"
                 >
-
                 {#
                 Uncomment this section and add a remember_me option below your firewall to activate remember me functionality.
                 See https://symfony.com/doc/current/security/remember_me.html

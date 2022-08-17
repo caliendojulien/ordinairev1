@@ -19,7 +19,7 @@ class AjoutStagiaireType extends AbstractType
             ->add('nom')
             ->add('prenom')
             ->add('compagnie')
-            ->add('stage', EntityType::class, ['multiple' => false, 'expanded' => false, 'class' => Stages::class, 'choice_label' => 'nom', 'label' => false])
+            ->add('isAdmin')
             ->add('Ajouter', SubmitType::class, ['attr' => ['class' => 'button']]);;
     }
 

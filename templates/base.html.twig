@@ -27,7 +27,9 @@
     <nav>
         {% if app.user %}
         <div id="divDeconnexionIcon">
-            <a href="{{ path('app_logout') }}"><img id="deconnexionIcon" src="{{ asset('CSS/media/power-off-solid.png') }}" alt="deconnexion"></a>
+            <a href="{{ path('app_logout') }}"><img id="deconnexionIcon"
+                                                    src="{{ asset('CSS/media/power-off-solid.png') }}"
+                                                    alt="deconnexion"></a>
         </div>
         {% endif %}
     </nav>
