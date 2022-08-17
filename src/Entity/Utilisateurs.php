@@ -114,21 +114,21 @@ class Utilisateurs
         return $this->repas;
     }
 
-    public function addRepa(Repas $repa): self
+    public function addRepas(Repas $repa): self
     {
         if (!$this->repas->contains($repa)) {
             $this->repas->add($repa);
-            $repa->addIdUtilisateur($this);
+            $repa->addUser($this);
 
         }
 
         return $this;
     }
 
-    public function removeRepa(Repas $repa): self
+    public function removeRepas(Repas $repa): self
     {
         if ($this->repas->removeElement($repa)) {
-            $repa->removeIdUtilisateur($this);
+            $repa->removeUser($this);
         }
 
         return $this;

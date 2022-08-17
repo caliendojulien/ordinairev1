@@ -78,7 +78,7 @@ class Repas
         return $this->utilisateurs;
     }
 
-    public function addIdUser(Utilisateurs $utilisateur): self
+    public function addUser(Utilisateurs $utilisateur): self
     {
         if (!$this->utilisateurs->contains($utilisateur)) {
             $this->utilisateurs->add($utilisateur);
@@ -87,7 +87,7 @@ class Repas
         return $this;
     }
 
-    public function removeIdUser(Utilisateurs $utilisateur): self
+    public function removeUser(Utilisateurs $utilisateur): self
     {
         $this->utilisateurs->removeElement($utilisateur);
 
