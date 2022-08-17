@@ -25,12 +25,12 @@ class Repas
     #[ORM\Column]
     private ?bool $soir = null;
 
-    #[ORM\ManyToMany(targetEntity: user::class, inversedBy: 'repas')]
-    private Collection $id_user;
+    #[ORM\ManyToMany(targetEntity: Utilisateurs::class, inversedBy: 'repas')]
+    private Collection $utilisateurs;
 
     public function __construct()
     {
-        $this->id_user = new ArrayCollection();
+        $this->utilisateurs = new ArrayCollection();
     }
 
 
@@ -71,25 +71,25 @@ class Repas
     }
 
     /**
-     * @return Collection<int, User>
+     * @return Collection<int, Utilisateurs>
      */
     public function getIdUser(): Collection
     {
-        return $this->id_user;
+        return $this->utilisateurs;
     }
 
-    public function addIdUser(User $idUser): self
+    public function addIdUser(Utilisateurs $utilisateur): self
     {
-        if (!$this->id_user->contains($idUser)) {
-            $this->id_user->add($idUser);
+        if (!$this->utilisateurs->contains($utilisateur)) {
+            $this->utilisateurs->add($utilisateur);
         }
 
         return $this;
     }
 
-    public function removeIdUser(User $idUser): self
+    public function removeIdUser(Utilisateurs $utilisateur): self
     {
-        $this->id_user->removeElement($idUser);
+        $this->utilisateurs->removeElement($utilisateur);
 
         return $this;
     }
