@@ -22,13 +22,13 @@
                     <label for="inputMail">E-mail</label>
                 </div>
                 <div class="elementsForm">
-                    <input type="email" value="{{ last_username }}" name="mail" id="inputMail" class="form-control" autocomplete="mail" required autofocus>
+                    <input type="email" value="{{ last_username }}" name="email" id="inputMail" class="form-control" autocomplete="mail" required autofocus>
                 </div>
                 <div class="elementsForm">
                     <label for="inputMotDePasse">Mot de passe</label>
                 </div>
                 <div class="elementsForm">
-                    <input type="password" name="motDePasse" id="inputMotDePasse" class="form-control" autocomplete="current-motDePasse" required>
+                    <input type="password" name="password" id="inputMotDePasse" class="form-control" autocomplete="current-motDePasse" required>
                 </div>
                 <input type="hidden" name="_csrf_token"
                        value="{{ csrf_token('authenticate') }}"

@@ -20,14 +20,16 @@
             <img id="minarmHeader" src="{{ asset('CSS/media/minarm.png') }}" alt="minarm">
         </div>
         <div id="divCmfp">
-            <img id="cmfp" src="{{ asset('CSS/media/cmfp.png') }}" alt="cmfp">
+            <a href=""><img id="cmfp" src="{{ asset('CSS/media/cmfp.png') }}" alt="cmfp"></a>
         </div>
         <div id="divLogoVide"></div>
     </div>
     <nav>
+        {% if app.user %}
         <div id="divDeconnexionIcon">
-            <a href="{{ path('login') }}"><img id="deconnexionIcon" src="{{ asset('CSS/media/power-off-solid.png') }}" alt="deconnexion"></a>
+            <a href="{{ path('app_logout') }}"><img id="deconnexionIcon" src="{{ asset('CSS/media/power-off-solid.png') }}" alt="deconnexion"></a>
         </div>
+        {% endif %}
     </nav>
     {% block header %}
     {% endblock %}
