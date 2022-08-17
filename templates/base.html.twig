@@ -26,7 +26,12 @@
     </div>
     <nav>
         {% if app.user %}
-        <div id="divDeconnexionIcon">
+            <div class="elementNav">
+                <p id="bonjourCDS">Bonjour {{ app.user.email }}</p>
+            </div>
+        {% endif %}
+        {% if app.user %}
+        <div class="elementNav">
             <a href="{{ path('app_logout') }}"><img id="deconnexionIcon"
                                                     src="{{ asset('CSS/media/power-off-solid.png') }}"
                                                     alt="deconnexion"></a>
