@@ -7,6 +7,11 @@
     <script src="{{ asset('JS/decompteRationnaire.js') }}"></script>
 {% endblock %}
 
+{% block lienNav %}
+    {% if app.user %}
+        <a class="texteNav + animText" href="{{ path('decompte_index') }}">Décompte rationnaire</a>
+    {% endif %}
+{% endblock %}
 
 {% block main %}
     <div id="titre">
