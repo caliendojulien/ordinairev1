@@ -19,6 +19,11 @@
     animation: texteNavBackground 0.3s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
 }
 
+.animText:active {
+    animation: 0.3s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+    background-color: #387796;
+}
+
 @keyframes texteNavBackground {
     0% {
     }
@@ -39,6 +44,11 @@
     }
 }
 
+#deconnexionIcon:active {
+    animation: 0.3s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+    background-color: rgba(56, 119, 150, 0);
+}
+
 .bouttonValidation:hover {
     animation: btValidBackground 0.3s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
 }
@@ -50,4 +60,10 @@
         background-color: #34546b;
         border-color: #34546b;
     }
+}
+
+.bouttonValidation:active {
+    animation: 0.3s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+    background-color: #387796;
+    border-color: #387796;
 }

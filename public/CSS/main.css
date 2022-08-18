@@ -18,3 +18,27 @@ main {
     grid-area: 1 / 2 / 2 / 5;
 }
 .gridH1Vide2 { grid-area: 1 / 5 / 2 / 6; }
+
+/* decompte rationnaire */
+
+#numSemaine {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+}
+
+.flechesNumSemaine {
+    height: 25px;
+    background-color: #387796;
+    padding: 10px;
+    border-radius: 10px;
+    margin: 10px;
+}
+
+h3 {
+    display: flex;
+    justify-content: center;
+    font-size: 25px;
+    width: 200px;
+}
