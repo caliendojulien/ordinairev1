@@ -34,10 +34,14 @@ class Stages
     #[ORM\OneToMany(mappedBy: 'stages', targetEntity: Repas::class)]
     private Collection $StageRepas;
 
+    #[ORM\ManyToMany(targetEntity: Admin::class, mappedBy: 'stages')]
+    private Collection $admins;
+
     public function __construct()
     {
         $this->user = new ArrayCollection();
         $this->StageRepas = new ArrayCollection();
+        $this->admins = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -148,6 +152,33 @@ class Stages
             if ($stageRepa->getStages() === $this) {
                 $stageRepa->setStages(null);
             }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Admin>
+     */
+    public function getAdmins(): Collection
+    {
+        return $this->admins;
+    }
+
+    public function addAdmin(Admin $admin): self
+    {
+        if (!$this->admins->contains($admin)) {
+            $this->admins->add($admin);
+            $admin->addStage($this);
+        }
+
+        return $this;
+    }
+
+    public function removeAdmin(Admin $admin): self
+    {
+        if ($this->admins->removeElement($admin)) {
+            $admin->removeStage($this);
         }
 
         return $this;

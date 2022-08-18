@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Repository\AdminRepository;
 use App\Repository\StagesRepository;
 use App\Repository\UtilisateursRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -10,13 +11,13 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class DecompteRationnaireController extends AbstractController
 {
-    #[Route('/decompte-rationnaire/{id}', name: 'index_decompte_rationnaire')]
+    #[Route('/decompte/{id}', name: 'index_decompte')]
     public function index(
         $id,
-        StagesRepository $stagesRepository
+        AdminRepository $AdminRepository
     ): Response
     {
-        $listeStage = $stagesRepository->findAll();
+        $listeStage = $AdminRepository->findOneBy(["stages" => ""]);
 
 
         $Lundi = strtotime('next monday +2 weeks');
@@ -24,7 +25,6 @@ class DecompteRationnaireController extends AbstractController
         $Mercredi = strtotime('next monday +2 weeks +2 days');
         $Jeudi = strtotime('next monday +2 weeks +3 days');
         $Vendredi = strtotime('next monday +2 weeks +4 days');
-
 
         return $this->render('decompte_rationnaire/decompte_rationnaire.html.twig',
             [

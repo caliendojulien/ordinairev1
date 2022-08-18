@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\AdminRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
@@ -41,6 +43,14 @@ class Admin implements UserInterface, PasswordAuthenticatedUserInterface
 
     #[ORM\Column(length: 255)]
     private ?string $compagnie = null;
+
+    #[ORM\ManyToMany(targetEntity: Stages::class, inversedBy: 'admins')]
+    private Collection $stages;
+
+    public function __construct()
+    {
+        $this->stages = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -156,6 +166,30 @@ class Admin implements UserInterface, PasswordAuthenticatedUserInterface
     public function setCompagnie(string $compagnie): self
     {
         $this->compagnie = $compagnie;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Stages>
+     */
+    public function getStages(): Collection
+    {
+        return $this->stages;
+    }
+
+    public function addStage(Stages $stage): self
+    {
+        if (!$this->stages->contains($stage)) {
+            $this->stages->add($stage);
+        }
+
+        return $this;
+    }
+
+    public function removeStage(Stages $stage): self
+    {
+        $this->stages->removeElement($stage);
 
         return $this;
     }
