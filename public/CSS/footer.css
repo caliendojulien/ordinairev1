@@ -1,0 +1,29 @@
+#groupElementFooter {
+    margin-top: 100px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: 1fr;
+    grid-column-gap: 0;
+    grid-row-gap: 0;
+    height: 200px;
+}
+
+#divBackgroundEF1 {
+    grid-area: 1 / 1 / 2 / 2;
+    background-color: #323642;
+}
+
+#divBackgroundEF2 {
+    grid-area: 1 / 2 / 2 / 3;
+    background-color: #2A2C38;
+}
+
+.nav2 {
+    background-color: #1E2128;
+}
+
+#divMinarmFooter {
+    height: 120px;
+    display: flex;
+    justify-content: center;
+}

@@ -4,9 +4,11 @@
     <meta charset="UTF-8">
     <title>{% block title %}Décompte rationnaire{% endblock %}</title>
     <link rel="icon" href="{{ asset('CSS/media/new_Logo_CMFP.png') }}">
-    <link rel="stylesheet" href="{{ asset('CSS/style.css') }}">
-    <link rel="stylesheet" href="{{ asset('CSS/ajouterStagiaire.css') }}">
-    <link rel="stylesheet" href="{{ asset('CSS/login.css') }}">
+    <link rel="stylesheet" href="{{ asset('CSS/body.css') }}">
+    <link rel="stylesheet" href="{{ asset('CSS/header.css') }}">
+    <link rel="stylesheet" href="{{ asset('CSS/main.css') }}">
+    <link rel="stylesheet" href="{{ asset('CSS/form.css') }}">
+    <link rel="stylesheet" href="{{ asset('CSS/footer.css') }}">
     {% block css %}
     {% endblock %}
     {% block js %}
@@ -21,23 +23,38 @@
         <div id="divCmfp">
             <a href=""><img id="cmfp" src="{{ asset('CSS/media/cmfp.png') }}" alt="cmfp"></a>
         </div>
-        <div id="divLogoVide"></div>
+        <div id="gridLogoVide"></div>
     </div>
     <nav>
-        <div id="divDeconnexionIcon">
-            <a href="{{ path('app_logout') }}"><img id="deconnexionIcon"
-                                                    src="{{ asset('CSS/media/power-off-solid.png') }}"
-                                                    alt="deconnexion"></a>
-        {% if app.user %}
-            <div class="elementNav">
-                <p id="bonjourCDS">Bonjour {{ app.user.email }}</p>
+        <div class="gridNavParent">
+            <div class="gridNav1">
+                {% if app.user %}
+                <div class="elementNav">
+                    <p id="bonjourCDS" class="texteNav">Bonjour {{ app.user.grade }} {{ app.user.nom }}</p>
+                </div>
+                {% endif %}
             </div>
-        {% endif %}
-        {% if app.user %}
-        <div class="elementNav">
-            <a href="{{ path('app_logout') }}"><img id="deconnexionIcon"
-                                                    src="{{ asset('CSS/media/power-off-solid.png') }}"
-                                                    alt="deconnexion"></a>
+            {% if app.user %}
+            <div class="gridNav2Connecte">
+            {% else %}
+            <div class="gridNav2Deconnecte">
+            {% endif %}
+                {% block lienNav %}
+                <a class="texteNav" href="{{ path('app_ajouter') }}">Ajouter un CDS</a>
+                {% endblock %}
+                {% if app.user %}
+                <p class="texteNav">|</p>
+                <a class="texteNav" href="{{ path('app_repas') }}">Repas</a>
+                {% endif %}
+            </div>
+            <div class="gridNav3">
+                {% if app.user %}
+                <div class="elementNav">
+                    <a href="{{ path('app_logout') }}"><img id="deconnexionIcon"
+                                                            src="{{ asset('CSS/media/power-off-solid.png') }}"
+                                                            alt="deconnexion"></a>
+                </div>
+            </div>
         </div>
         {% endif %}
     </nav>
