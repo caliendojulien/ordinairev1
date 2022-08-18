@@ -7,6 +7,12 @@
     <script src="{{ asset('JS/decompteRationnaire.js') }}"></script>
 {% endblock %}
 
+{% block lienNav %}
+    {% if app.user %}
+        <a class="texteNav + animText" href="{{ path('app_ajouter') }}">Ajouter un CDS</a>
+    {% else %}
+    {% endif %}
+{% endblock %}
 
 {% block main %}
     <div id="titre">

@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>{% block title %}Décompte rationnaire{% endblock %}</title>
     <link rel="icon" href="{{ asset('CSS/media/new_Logo_CMFP.png') }}">
+    <link rel="stylesheet" href="{{ asset('CSS/animation.css') }}">
     <link rel="stylesheet" href="{{ asset('CSS/body.css') }}">
     <link rel="stylesheet" href="{{ asset('CSS/header.css') }}">
     <link rel="stylesheet" href="{{ asset('CSS/main.css') }}">
@@ -26,7 +27,7 @@
         <div id="gridLogoVide"></div>
     </div>
     <nav>
-        <div class="gridNavParent">
+        <div class="gridNavParent + animNav">
             <div class="gridNav1">
                 {% if app.user %}
                 <div class="elementNav">
@@ -34,18 +35,8 @@
                 </div>
                 {% endif %}
             </div>
-            {% if app.user %}
-            <div class="gridNav2Connecte">
-            {% else %}
-            <div class="gridNav2Deconnecte">
-            {% endif %}
-                {% block lienNav %}
-                <a class="texteNav" href="{{ path('app_ajouter') }}">Ajouter un CDS</a>
-                {% endblock %}
-                {% if app.user %}
-                <p class="texteNav">|</p>
-                <a class="texteNav" href="{{ path('app_repas') }}">Repas</a>
-                {% endif %}
+            <div class="gridNav2">
+                {% block lienNav %}{% endblock %}
             </div>
             <div class="gridNav3">
                 {% if app.user %}

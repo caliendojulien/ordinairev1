@@ -1,0 +1,53 @@
+.animNav {
+    animation: slide-top 0.7s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+}
+
+@keyframes slide-top {
+    0% {
+        -webkit-transform: translateY(10px);
+        transform: translateY(10px);
+        opacity: 0;
+    }
+    100% {
+        -webkit-transform: translateY(0);
+        transform: translateY(0);
+        opacity: 100;
+    }
+}
+
+.animText:hover {
+    animation: texteNavBackground 0.3s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+}
+
+@keyframes texteNavBackground {
+    0% {
+    }
+    100% {
+        background-color: rgba(56, 119, 150, 0.47);
+    }
+}
+
+#deconnexionIcon:hover {
+    animation: deconnexionBackground 0.3s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+}
+
+@keyframes deconnexionBackground {
+    0% {
+    }
+    100% {
+        background-color: rgba(56, 119, 150, 0.47);
+    }
+}
+
+.bouttonValidation:hover {
+    animation: btValidBackground 0.3s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+}
+
+@keyframes btValidBackground {
+    0% {
+    }
+    100% {
+        background-color: #34546b;
+        border-color: #34546b;
+    }
+}
