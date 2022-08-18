@@ -13,6 +13,9 @@
     {{ form_row(registrationForm.nom) }}
     {{ form_row(registrationForm.prenom) }}
     {{ form_row(registrationForm.compagnie) }}
+    <div>
+        {{ form_widget(registrationForm.stages) }}
+    </div>
     <button type="submit" class="btn">Register</button>
-    {{ form_end(registrationForm) }}
+    {{ form_end(registrationForm, {'render_rest': false}) }}
 {% endblock %}

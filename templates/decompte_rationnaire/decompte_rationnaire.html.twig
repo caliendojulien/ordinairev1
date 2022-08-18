@@ -10,9 +10,8 @@
 
 {% block main %}
     <div id="titre">
-        <h1>Decompte rationnaire</h1>
+        <h1>Decompte rationnaire :</h1>
     </div>
-
     <div id="numSemaine">
         <img src="{{ asset('CSS/media/fleche-fine-contour-vers-la-gauche.png') }}" alt="" id="g" onclick="moins()">
         <div>
@@ -20,6 +19,15 @@
         </div>
         <img src="{{ asset('CSS/media/fleche-fine-contour-vers-la-droite (1).png') }}" alt="" id="d" onclick="plus()">
     </div>
+    <div>
+        {% for stage in app.user.stages %}
+            <div>
+                <a href="">{{ stage.nom }}</a>
+            </div>
+        {% endfor %}
+    </div>
+
+    {#
     <table>
         <thead>
         <tr>
@@ -33,7 +41,7 @@
         </thead>
         <tbody>
         <tr>
-            <th></th>
+            <td></td>
             <td>Midi</td>
             <td>Soir</td>
             <td>Midi</td>
@@ -45,13 +53,13 @@
             <td>Midi</td>
             <td>Soir</td>
         </tr>
-        {% for stage in listeStage %}
+        {% for stage in app.user %}
             <tr>
                 <th>{{ stage.nom }}</th>
             </tr>
-        {% endfor %}
+
         </tbody>
-    </table>
+    </table> #}
 
     <script></script>
 
