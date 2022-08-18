@@ -2,8 +2,11 @@
 
 namespace App\Controller;
 
+use App\Entity\Promotion;
 use App\Entity\Stages;
-use App\Form\DetailStageType;
+use App\Form\PromotionType;
+use App\Repository\AdminRepository;
+use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -12,7 +15,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class DecompteRationnaireController extends AbstractController
 {
-    #[Route('/decompte', name: 'index_decompte')]
+    #[Route('/decompte', name: 'decompte_index')]
     public function index(): Response
     {
 
@@ -34,28 +37,29 @@ class DecompteRationnaireController extends AbstractController
         );
     }
 
-    #[Route('/decompte-detail/{id}', name: 'update_decompte')]
-    public function update(
-        ManagerRegistry $update,
-                        $id,
-        Request         $request
+    #[Route('/mespromotions', name: 'mespromotions_voirPromotions')]
+    public function voirPromotions(
+        AdminRepository        $adminRepository,
+        EntityManagerInterface $entityManager,
+        Request                $request
     ): Response
     {
 
-        $entityManager = $update->getManager();
-        $detail = $entityManager->getRepository(Stages::class)->find($id);
-        $formDetail = $this->createForm(DetailStageType::class, $detail);
-        $formDetail->handleRequest($request);
 
+        $promo = new Promotion();
+        $formPromotion = $this->createForm(PromotionType::class, $promo);
+        $formPromotion->handleRequest($request);
+        $email = $this->getUser()->getUserIdentifier();
+        $userConnecte = $adminRepository->findOneBy(['email' => $email]);
+        $promo->setCdsPromo($userConnecte);
 
-        if ($formDetail->isSubmitted()) {
-            $entityManager->persist($detail);
+        if ($formPromotion->isSubmitted()) {
+            $entityManager->persist($promo);
             $entityManager->flush();
-            dump($formDetail);
             return $this->redirectToRoute('index_decompte');
         }
 
-        return $this->renderForm('decompte_rationnaire/decompte_detail.html.twig', compact('formDetail')
+        return $this->renderForm('mesformations.html.twig', compact('formPromotion')
 
         );
     }

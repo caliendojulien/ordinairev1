@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block css %}
+    <link rel="stylesheet" href="{{ asset('CSS/decompteRationnaire.css') }}">
+{% endblock %}
+{% block js %}
+    <script src="{{ asset('JS/decompteRationnaire.js') }}"></script>
+{% endblock %}
+
+
+{% block main %}
+    <div id="titre">
+        <h1>Ajouter un stage :</h1>
+    </div>
+
+    <div>
+        {{ form(formPromotion) }}
+
+    </div>
+
+
+
+    <script></script>
+
+{% endblock %}
+

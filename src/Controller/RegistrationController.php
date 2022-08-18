@@ -26,7 +26,7 @@ class RegistrationController extends AbstractController
 
         dump($user);
 
-        if ($form->isSubmitted()) {
+        if ($form->isSubmitted() && $form->isValid()) {
             // encode the plain password
 
             dump("ok");
