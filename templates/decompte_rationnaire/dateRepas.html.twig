@@ -28,16 +28,11 @@
     <div>
 
     </div>
-    {% for promotion in app.user.promotion %}
-        <div>
-            <a href="{{ path('ajoutDate_dateRepas', {'promo': promotion.id}) }}">{{ promotion.nomPromotion }}</a>
+    <p>{{ promo.nomPromotion }}</p>
 
-        </div>
-    {% else %}
-        <div>
-            <p>Aucune Promo</p>
-        </div>
-    {% endfor %}
+    <p>{{ form(formRepas) }}</p>
+    </div>
+
 
 
     {#
