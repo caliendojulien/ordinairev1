@@ -1,21 +1,81 @@
 {% extends 'base.html.twig' %}
 
-{% block header %}
-    <h1 class="titre_stagiaire">Ajouter un Chef de section</h1>
+{% block lienNav %}
+    {% if app.user %}
+            <a class="texteNav" href="{{ path('app_ajouter') }}">Ajouter un CDS</a>
+    {% else %}
+            <a class="texteNav" href="{{ path('app_login') }}">Connexion</a>
+    {% endif %}
 {% endblock %}
 
 {% block main %}
-
-    {{ form_start(registrationForm) }}
-    {{ form_row(registrationForm.email) }}
-    {#  {{ form_row(registrationForm.plainPassword, {label: 'Password'}) }} #}
-    {{ form_row(registrationForm.grade) }}
-    {{ form_row(registrationForm.nom) }}
-    {{ form_row(registrationForm.prenom) }}
-    {{ form_row(registrationForm.compagnie) }}
-    <div>
-        {{ form_widget(registrationForm.stages) }}
+<form method="post">
+    <div class="gridH1Parent">
+        <div class="gridH1Vide1"></div>
+        <div class="gridH1"><h1 class="h3 mb-3 font-weight-normal">Ajouter un Chef de section</h1></div>
+        <div class="gridH1Vide2"></div>
     </div>
-    <button type="submit" class="btn">Register</button>
-    {{ form_end(registrationForm, {'render_rest': false}) }}
+    <div class="formCentre">
+        <div class="gridFormAjoutParent">
+            {{ form_start(registrationForm) }}
+            <div class="gridFormAjout1">
+                <div class="elementsForm">
+                    <label>
+                        {{ form_label(registrationForm.email) }}
+                    </label>
+                </div>
+                <div class="elementsForm">
+                    {{ form_widget(registrationForm.email) }}
+                </div>
+            </div>
+            {#  {{ form_row(registrationForm.plainPassword, {label: 'Password'}) }} #}
+            <div class="gridFormAjout2">
+                <div class="elementsForm">
+                    <label>
+                        {{ form_label(registrationForm.grade) }}
+                    </label>
+                </div>
+                <div class="elementsForm">
+                    {{ form_widget(registrationForm.grade) }}
+                </div>
+            </div>
+            <div class="gridFormAjout3">
+                <div class="elementsForm">
+                    <label>
+                        {{ form_label(registrationForm.nom) }}
+                    </label>
+                </div>
+                <div class="elementsForm">
+                    {{ form_widget(registrationForm.nom) }}
+                </div>
+            </div>
+            <div class="gridFormAjout4">
+                <div class="elementsForm">
+                    <label>
+                        {{ form_label(registrationForm.prenom) }}
+                    </label>
+                </div>
+                <div class="elementsForm">
+                    {{ form_widget(registrationForm.prenom) }}
+                </div>
+            </div>
+            <div class="gridFormAjout5">
+                <div class="elementsForm">
+                    <label>
+                        {{ form_label(registrationForm.compagnie) }}
+                    </label>
+                </div>
+                <div class="elementsForm">
+                    {{ form_widget(registrationForm.compagnie) }}
+                </div>
+            </div>
+            <div class="gridFormAjout6">
+                <button class="bouttonValidation" type="submit">
+                    ENREGISTRER
+                </button>
+            </div>
+            {{ form_end(registrationForm) }}
+        </div>
+    </div>
+</form>
 {% endblock %}
