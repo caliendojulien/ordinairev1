@@ -44,6 +44,14 @@ class Admin implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(length: 255)]
     private ?string $compagnie = null;
 
+    #[ORM\OneToMany(mappedBy: 'cds_promo', targetEntity: Promotion::class)]
+    private Collection $promotion;
+
+    public function __construct()
+    {
+        $this->promotion = new ArrayCollection();
+    }
+
 
     public function getId(): ?int
     {
@@ -159,6 +167,36 @@ class Admin implements UserInterface, PasswordAuthenticatedUserInterface
     public function setCompagnie(string $compagnie): self
     {
         $this->compagnie = $compagnie;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Promotion>
+     */
+    public function getPromotion(): Collection
+    {
+        return $this->promotion;
+    }
+
+    public function addPromotion(Promotion $promotion): self
+    {
+        if (!$this->promotion->contains($promotion)) {
+            $this->promotion->add($promotion);
+            $promotion->setCdsPromo($this);
+        }
+
+        return $this;
+    }
+
+    public function removePromotion(Promotion $promotion): self
+    {
+        if ($this->promotion->removeElement($promotion)) {
+            // set the owning side to null (unless already changed)
+            if ($promotion->getCdsPromo() === $this) {
+                $promotion->setCdsPromo(null);
+            }
+        }
 
         return $this;
     }

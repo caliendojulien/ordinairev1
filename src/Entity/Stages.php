@@ -19,10 +19,13 @@ class Stages
     #[ORM\Column(length: 255)]
     private ?string $nom = null;
 
+    #[ORM\OneToMany(mappedBy: 'stage', targetEntity: Promotion::class)]
+    private Collection $promotions;
+
 
     public function __construct()
     {
-
+        $this->promotions = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -38,6 +41,36 @@ class Stages
     public function setNom(string $nom): self
     {
         $this->nom = $nom;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Promotion>
+     */
+    public function getPromotions(): Collection
+    {
+        return $this->promotions;
+    }
+
+    public function addPromotion(Promotion $promotion): self
+    {
+        if (!$this->promotions->contains($promotion)) {
+            $this->promotions->add($promotion);
+            $promotion->setStage($this);
+        }
+
+        return $this;
+    }
+
+    public function removePromotion(Promotion $promotion): self
+    {
+        if ($this->promotions->removeElement($promotion)) {
+            // set the owning side to null (unless already changed)
+            if ($promotion->getStage() === $this) {
+                $promotion->setStage(null);
+            }
+        }
 
         return $this;
     }
