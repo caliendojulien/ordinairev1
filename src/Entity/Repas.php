@@ -19,10 +19,6 @@ class Repas
     #[ORM\Column(type: Types::DATE_MUTABLE)]
     private ?\DateTimeInterface $date = null;
 
-
-    #[ORM\ManyToMany(targetEntity: Utilisateurs::class, inversedBy: 'repas')]
-    private Collection $utilisateurs;
-
     #[ORM\Column(length: 255)]
     private ?string $nomStage = null;
 
@@ -32,13 +28,10 @@ class Repas
     #[ORM\Column]
     private ?int $nbMangeantSoir = null;
 
-    #[ORM\ManyToOne(inversedBy: 'StageRepas')]
-    #[ORM\JoinColumn(nullable: false)]
-    private ?Stages $stages = null;
 
     public function __construct()
     {
-        $this->utilisateurs = new ArrayCollection();
+
     }
 
 
@@ -54,30 +47,6 @@ class Repas
         return $this;
     }
 
-
-    /**
-     * @return Collection<int, Utilisateurs>
-     */
-    public function getIdUser(): Collection
-    {
-        return $this->utilisateurs;
-    }
-
-    public function addUser(Utilisateurs $utilisateur): self
-    {
-        if (!$this->utilisateurs->contains($utilisateur)) {
-            $this->utilisateurs->add($utilisateur);
-        }
-
-        return $this;
-    }
-
-    public function removeUser(Utilisateurs $utilisateur): self
-    {
-        $this->utilisateurs->removeElement($utilisateur);
-
-        return $this;
-    }
 
     public function getNomStage(): ?string
     {
@@ -111,18 +80,6 @@ class Repas
     public function setNbMangeantSoir(int $nbMangeantSoir): self
     {
         $this->nbMangeantSoir = $nbMangeantSoir;
-
-        return $this;
-    }
-
-    public function getStages(): ?Stages
-    {
-        return $this->stages;
-    }
-
-    public function setStages(?Stages $stages): self
-    {
-        $this->stages = $stages;
 
         return $this;
     }

@@ -30,11 +30,6 @@ class Utilisateurs
     #[ORM\Column]
     private ?bool $isAdmin = null;
 
-    #[ORM\ManyToMany(targetEntity: Repas::class, mappedBy: 'utilisateur')]
-    private Collection $repas;
-
-    #[ORM\ManyToOne(inversedBy: 'utilisateurs')]
-    private ?Stages $stage = null;
 
     public function __construct()
     {
@@ -106,43 +101,5 @@ class Utilisateurs
         return $this;
     }
 
-    /**
-     * @return Collection<int, Repas>
-     */
-    public function getRepas(): Collection
-    {
-        return $this->repas;
-    }
 
-    public function addRepas(Repas $repa): self
-    {
-        if (!$this->repas->contains($repa)) {
-            $this->repas->add($repa);
-            $repa->addUser($this);
-
-        }
-
-        return $this;
-    }
-
-    public function removeRepas(Repas $repa): self
-    {
-        if ($this->repas->removeElement($repa)) {
-            $repa->removeUser($this);
-        }
-
-        return $this;
-    }
-
-    public function getStage(): ?Stages
-    {
-        return $this->stage;
-    }
-
-    public function setStage(?Stages $stage): self
-    {
-        $this->stage = $stage;
-
-        return $this;
-    }
 }

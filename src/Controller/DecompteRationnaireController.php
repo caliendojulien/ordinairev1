@@ -2,23 +2,19 @@
 
 namespace App\Controller;
 
-use App\Repository\AdminRepository;
-use App\Repository\StagesRepository;
-use App\Repository\UtilisateursRepository;
+use App\Entity\Stages;
+use App\Form\DetailStageType;
+use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 class DecompteRationnaireController extends AbstractController
 {
-    #[Route('/decompte/{id}', name: 'index_decompte')]
-    public function index(
-        $id,
-        AdminRepository $AdminRepository
-    ): Response
+    #[Route('/decompte', name: 'index_decompte')]
+    public function index(): Response
     {
-        $listeStage = $AdminRepository->findOneBy(["stages" => ""]);
-
 
         $Lundi = strtotime('next monday +2 weeks');
         $Mardi = strtotime('next monday +2 weeks +1 day');
@@ -33,8 +29,34 @@ class DecompteRationnaireController extends AbstractController
                 'Mercredi' => $Mercredi,
                 'Jeudi' => $Jeudi,
                 'Vendredi' => $Vendredi,
-                'listeStage' => $listeStage
+
             ]
+        );
+    }
+
+    #[Route('/decompte-detail/{id}', name: 'update_decompte')]
+    public function update(
+        ManagerRegistry $update,
+                        $id,
+        Request         $request
+    ): Response
+    {
+
+        $entityManager = $update->getManager();
+        $detail = $entityManager->getRepository(Stages::class)->find($id);
+        $formDetail = $this->createForm(DetailStageType::class, $detail);
+        $formDetail->handleRequest($request);
+
+
+        if ($formDetail->isSubmitted()) {
+            $entityManager->persist($detail);
+            $entityManager->flush();
+            dump($formDetail);
+            return $this->redirectToRoute('index_decompte');
+        }
+
+        return $this->renderForm('decompte_rationnaire/decompte_detail.html.twig', compact('formDetail')
+
         );
     }
 }

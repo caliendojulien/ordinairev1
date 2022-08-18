@@ -26,9 +26,9 @@ class RegistrationFormType extends AbstractType
             ->add('grade')
             ->add('nom')
             ->add('prenom')
-            ->add('compagnie')
-            ->add('stages', EntityType::class, ['label' => false, 'multiple' => true, 'expanded' => true, 'choice_label' => 'nom', 'class' => Stages::class,
-                'attr' => ['class' => 'checkbox'], 'row_attr' => ['class' => 'zizi']]);
+            ->add('compagnie');
+        //->add('stages', EntityType::class, ['label' => false, 'multiple' => true, 'expanded' => true, 'choice_label' => 'nom', 'class' => Stages::class,
+        //   'attr' => ['class' => 'checkbox'], 'row_attr' => ['class' => 'zizi']]);
     }
 
     public function configureOptions(OptionsResolver $resolver): void

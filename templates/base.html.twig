@@ -29,35 +29,38 @@
         <div class="gridNavParent">
             <div class="gridNav1">
                 {% if app.user %}
-                <div class="elementNav">
-                    <p id="bonjourCDS" class="texteNav">Bonjour {{ app.user.grade }} {{ app.user.nom }}</p>
-                </div>
+                    <div class="elementNav">
+                        <p id="bonjourCDS" class="texteNav">Bonjour {{ app.user.grade }} {{ app.user.nom }}</p>
+                    </div>
                 {% endif %}
             </div>
             {% if app.user %}
             <div class="gridNav2Connecte">
-            {% else %}
-            <div class="gridNav2Deconnecte">
-            {% endif %}
-                {% block lienNav %}
-                <a class="texteNav" href="{{ path('app_ajouter') }}">Ajouter un CDS</a>
-                {% endblock %}
-                {% if app.user %}
-                <p class="texteNav">|</p>
-                <a class="texteNav" href="{{ path('app_repas') }}">Repas</a>
-                {% endif %}
-            </div>
-            <div class="gridNav3">
-                {% if app.user %}
-                <div class="elementNav">
-                    <a href="{{ path('app_logout') }}"><img id="deconnexionIcon"
-                                                            src="{{ asset('CSS/media/power-off-solid.png') }}"
-                                                            alt="deconnexion"></a>
+                {% else %}
+                <div class="gridNav2Deconnecte">
+                    {% endif %}
+                    {% block lienNav %}
+                        <a class="texteNav" href="{{ path('app_ajouter') }}">Ajouter un CDS</a>
+                    {% endblock %}
+                    {% if app.user %}
+                        <p class="texteNav">|</p>
+                        <a class="texteNav" href="{{ path('app_repas') }}">Repas</a>
+                    {% endif %}
+                </div>
+                <div class="gridNav3">
+                    {% if app.user %}
+                        <div class="elementNav">
+                            <a href="{{ path('app_logout') }}"><img id="deconnexionIcon"
+                                                                    src="{{ asset('CSS/media/power-off-solid.png') }}"
+                                                                    alt="deconnexion"></a>
+
+                        </div>
+                    {% endif %}
                 </div>
             </div>
         </div>
-        {% endif %}
     </nav>
+
     {% block header %}
     {% endblock %}
 </header>

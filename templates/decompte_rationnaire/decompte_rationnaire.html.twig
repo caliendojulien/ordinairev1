@@ -22,7 +22,7 @@
     <div>
         {% for stage in app.user.stages %}
             <div>
-                <a href="">{{ stage.nom }}</a>
+                <a href="{{ path('update_decompte', {'id': stage.id}) }}">{{ stage.nom }}</a>
             </div>
         {% endfor %}
     </div>
