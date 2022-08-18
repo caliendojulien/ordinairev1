@@ -30,9 +30,9 @@
         <div class="gridNavParent + animNav">
             <div class="gridNav1">
                 {% if app.user %}
-                <div class="elementNav">
-                    <p id="bonjourCDS" class="texteNav">Bonjour {{ app.user.grade }} {{ app.user.nom }}</p>
-                </div>
+                    <div class="elementNav">
+                        <p id="bonjourCDS" class="texteNav">Bonjour {{ app.user.grade }} {{ app.user.nom }}</p>
+                    </div>
                 {% endif %}
             </div>
             <div class="gridNav2">
@@ -45,6 +45,7 @@
                                                             src="{{ asset('CSS/media/power-off-solid.png') }}"
                                                             alt="deconnexion"></a>
                 </div>
+                {% endif %}
             </div>
         </div>
     </nav>
