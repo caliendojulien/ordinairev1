@@ -16,10 +16,10 @@ class RepasType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('date')
+            // ->add('date')
             ->add('nbMangeantMidi')
-            ->add('nbMangeantSoir')
-            ->add('Ajouter', SubmitType::class, ['attr' => ['class' => 'button']]);;
+            ->add('nbMangeantSoir');
+            // ->add('Ajouter', SubmitType::class, ['attr' => ['class' => 'button']]);;
     }
 
     public function configureOptions(OptionsResolver $resolver): void

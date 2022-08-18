@@ -8,6 +8,7 @@ use App\Entity\Stages;
 use App\Form\PromotionType;
 use App\Form\RepasType;
 use App\Repository\AdminRepository;
+use DateTime;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -63,7 +64,7 @@ class DecompteRationnaireController extends AbstractController
             return $this->redirectToRoute('decompte_index');
         }
 
-        return $this->renderForm('decompte_rationnaire/mesformations.html.twig', compact('formPromotion')
+        return $this->renderForm('decompte_rationnaire/mespromotions.html.twig', compact('formPromotion')
 
         );
     }
@@ -73,14 +74,9 @@ class DecompteRationnaireController extends AbstractController
         Request                $request,
         EntityManagerInterface $entityManager,
         Promotion              $promo
-
-
     ): Response
     {
-        
-
         $repas = new Repas();
-        $repas->setDate(new \DateTime());
         $repas->setNbMangeantMidi($promo->getNbStagiaire());
         $repas->setNbMangeantSoir(0);
         $formRepas = $this->createForm(RepasType::class, $repas);
@@ -89,6 +85,9 @@ class DecompteRationnaireController extends AbstractController
 
         if ($formRepas->isSubmitted()) {
             $repas->setNomStage($promo->getNomPromotion());
+            $today = new DateTime();
+            $week = $today->format("W");
+            $repas->setSemaine(+$week + 2 % 52);
 
             $entityManager->persist($repas);
             $entityManager->flush();
