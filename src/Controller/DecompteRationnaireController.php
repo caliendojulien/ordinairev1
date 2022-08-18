@@ -56,10 +56,10 @@ class DecompteRationnaireController extends AbstractController
         if ($formPromotion->isSubmitted()) {
             $entityManager->persist($promo);
             $entityManager->flush();
-            return $this->redirectToRoute('index_decompte');
+            return $this->redirectToRoute('decompte_index');
         }
 
-        return $this->renderForm('mesformations.html.twig', compact('formPromotion')
+        return $this->renderForm('decompte_rationnaire/mespromotions.html.twig', compact('formPromotion')
 
         );
     }

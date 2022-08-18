@@ -8,9 +8,10 @@
 {% endblock %}
 
 {% block lienNav %}
-    {% if app.user %}
+    {% if is_granted("ROLE_ADMIN") %}
         <a class="texteNav + animText" href="{{ path('app_ajouter') }}">Ajouter un CDS</a>
     {% else %}
+        <a class="texteNav + animText" href="{{ path('mespromotions_voirPromotions') }}">Ajouter une promotion</a>
     {% endif %}
 {% endblock %}
 
