@@ -26,7 +26,7 @@
         <img src="{{ asset('CSS/media/fleche-fine-contour-vers-la-droite (1).png') }}" alt="" id="d" onclick="plus()">
     </div>
     <div>
-        {% for stage in app.user.stages %}
+        {% for stage in app.user.promotion %}
             <div>
                 <a href="{{ path('update_decompte', {'id': stage.id}) }}">{{ stage.nom }}</a>
             </div>
