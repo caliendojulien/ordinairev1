@@ -67,3 +67,20 @@
     background-color: #387796;
     border-color: #387796;
 }
+
+.promo:hover, .flechesNumSemaine:hover {
+    animation: btPromoBackground 0.3s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+}
+
+@keyframes btPromoBackground {
+    0% {
+    }
+    100% {
+        background-color: #34546b;
+    }
+}
+
+.promo:active, .flechesNumSemaine:active {
+    animation: 0.3s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+    background-color: #387796;
+}

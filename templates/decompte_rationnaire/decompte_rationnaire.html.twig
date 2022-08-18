@@ -28,13 +28,12 @@
     <div>
     </div>
     {% for promotion in app.user.promotion %}
-        <div>
-            <a href="{{ path('ajoutDate_dateRepas', {'promo': promotion.id}) }}">{{ promotion.nomPromotion }}</a>
-
+        <div class="listePromo">
+            <a class="promo" href="{{ path('ajoutDate_dateRepas', {'promo': promotion.id}) }}">{{ promotion.nomPromotion }}</a>
         </div>
     {% else %}
-        <div>
-            <p>Aucune Promo</p>
+        <div id="aucunePromo">
+            <p>Aucune Promotion</p>
         </div>
     {% endfor %}
 

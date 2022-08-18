@@ -42,3 +42,28 @@ h3 {
     font-size: 25px;
     width: 200px;
 }
+
+.listePromo {
+    display: flex;
+    justify-content: center;
+    margin: 20px;
+}
+
+.promo {
+    display: flex;
+    justify-content: start;
+    padding: 15px;
+    border-radius: 10px;
+    margin: 15px;
+    text-decoration: none;
+    color: #ffffff;
+    font-size: 25px;
+    background-color: rgba(52, 84, 107, 0.76);
+    width: 800px;
+}
+
+#aucunePromo {
+    display: flex;
+    justify-content: center;
+    margin: 20px;
+}
