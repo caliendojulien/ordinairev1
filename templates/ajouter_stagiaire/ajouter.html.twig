@@ -2,9 +2,7 @@
 
 {% block lienNav %}
     {% if app.user %}
-            <a class="texteNav" href="{{ path('app_ajouter') }}">Ajouter un CDS</a>
-    {% else %}
-            <a class="texteNav" href="{{ path('app_login') }}">Connexion</a>
+            <a class="texteNav + animText" href="{{ path('index_decompte') }}">Décompte rationnaire</a>
     {% endif %}
 {% endblock %}
 
@@ -20,9 +18,7 @@
             {{ form_start(registrationForm) }}
             <div class="gridFormAjout1">
                 <div class="elementsForm">
-                    <label>
-                        {{ form_label(registrationForm.email) }}
-                    </label>
+                    {{ form_label(registrationForm.email) }}
                 </div>
                 <div class="elementsForm">
                     {{ form_widget(registrationForm.email) }}
@@ -31,9 +27,7 @@
             {#  {{ form_row(registrationForm.plainPassword, {label: 'Password'}) }} #}
             <div class="gridFormAjout2">
                 <div class="elementsForm">
-                    <label>
-                        {{ form_label(registrationForm.grade) }}
-                    </label>
+                    {{ form_label(registrationForm.grade) }}
                 </div>
                 <div class="elementsForm">
                     {{ form_widget(registrationForm.grade) }}
@@ -41,9 +35,7 @@
             </div>
             <div class="gridFormAjout3">
                 <div class="elementsForm">
-                    <label>
-                        {{ form_label(registrationForm.nom) }}
-                    </label>
+                    {{ form_label(registrationForm.nom) }}
                 </div>
                 <div class="elementsForm">
                     {{ form_widget(registrationForm.nom) }}
@@ -51,9 +43,7 @@
             </div>
             <div class="gridFormAjout4">
                 <div class="elementsForm">
-                    <label>
-                        {{ form_label(registrationForm.prenom) }}
-                    </label>
+                    {{ form_label(registrationForm.prenom) }}
                 </div>
                 <div class="elementsForm">
                     {{ form_widget(registrationForm.prenom) }}
@@ -61,9 +51,7 @@
             </div>
             <div class="gridFormAjout5">
                 <div class="elementsForm">
-                    <label>
-                        {{ form_label(registrationForm.compagnie) }}
-                    </label>
+                    {{ form_label(registrationForm.compagnie) }}
                 </div>
                 <div class="elementsForm">
                     {{ form_widget(registrationForm.compagnie) }}
