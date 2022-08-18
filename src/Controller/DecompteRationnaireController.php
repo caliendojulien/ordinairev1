@@ -22,6 +22,7 @@ class DecompteRationnaireController extends AbstractController
     {
 
         $Lundi = strtotime('next monday +2 weeks');
+        $LundiPlus = \DateTime::createFromFormat('d/m/Y', $Lundi);
         $Mardi = strtotime('next monday +2 weeks +1 day');
         $Mercredi = strtotime('next monday +2 weeks +2 days');
         $Jeudi = strtotime('next monday +2 weeks +3 days');
@@ -34,6 +35,7 @@ class DecompteRationnaireController extends AbstractController
                 'Mercredi' => $Mercredi,
                 'Jeudi' => $Jeudi,
                 'Vendredi' => $Vendredi,
+                'LundiPlus' => $LundiPlus
 
             ]
         );
@@ -72,8 +74,11 @@ class DecompteRationnaireController extends AbstractController
         EntityManagerInterface $entityManager,
         Promotion              $promo
 
+
     ): Response
     {
+        
+
         $repas = new Repas();
         $repas->setDate(new \DateTime());
         $repas->setNbMangeantMidi($promo->getNbStagiaire());
