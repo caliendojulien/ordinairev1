@@ -1,8 +1,5 @@
 {% extends 'base.html.twig' %}
 
-{% block css %}
-    <link rel="stylesheet" href="{{ asset('CSS/decompteRationnaire.css') }}">
-{% endblock %}
 {% block js %}
     <script src="{{ asset('JS/decompteRationnaire.js') }}"></script>
 {% endblock %}
@@ -15,24 +12,54 @@
 {% endblock %}
 
 {% block main %}
-    <div id="titre">
-        <h1>Decompte rationnaire :</h1>
+    <div class="gridH1Parent">
+        <div class="gridH1Vide1"></div>
+        <div class="gridH1"><h1 class="h3 mb-3 font-weight-normal">Décompte rationnaire</h1></div>
+        <div class="gridH1Vide2"></div>
+    </div>
+    <div>
+        <p>{{ promo.nomPromotion }}</p>
     </div>
     <div id="numSemaine">
-        <img src="{{ asset('CSS/media/fleche-fine-contour-vers-la-gauche.png') }}" alt="" id="g" onclick="moins()">
+        <img class="flechesNumSemaine" src="{{ asset('CSS/media/fleche-gauche-blanche.png') }}" alt="" id="g" onclick="moins()">
         <div>
             <h3>Semaine n° <span id="numero">{{ "now" | date('W')+ 2 }}</span></h3>
         </div>
-        <img src="{{ asset('CSS/media/fleche-fine-contour-vers-la-droite (1).png') }}" alt="" id="d" onclick="plus()">
+        <img class="flechesNumSemaine" src="{{ asset('CSS/media/fleche-droite-blanche.png') }}" alt="" id="d" onclick="plus()">
     </div>
-    <div>
-
+    <div class="formCentre">
+        <div class="gridFormDateRParent">
+            {{ form_start(formRepas) }}
+            <div class="gridFormDateR1">
+                <div class="elementsForm">
+                    {{ form_label(formRepas.date) }}
+                </div>
+                <div class="elementsForm">
+                    {{ form_widget(formRepas.date) }}
+                </div>
+            </div>
+            <div class="gridFormDateR2">
+                <div class="elementsForm">
+                    {{ form_label(formRepas.nbMangeantMidi) }}
+                </div>
+                <div class="elementsForm">
+                    {{ form_widget(formRepas.nbMangeantMidi) }}
+                </div>
+            </div>
+            <div class="gridFormDateR3">
+                <div>
+                    {{ form_label(formRepas.nbMangeantSoir) }}
+                </div>
+                <div class="elementsForm">
+                    {{ form_widget(formRepas.nbMangeantSoir) }}
+                </div>
+            </div>
+            <div class="gridFormDateR4">
+                {{ form_widget(formRepas.Ajouter) }}
+            </div>
+            {{ form_end(formRepas) }}
+        </div>
     </div>
-    <p>{{ promo.nomPromotion }}</p>
-    <p>{{ form(formRepas) }}</p>
-
-    </div>
-
 
 
     {#

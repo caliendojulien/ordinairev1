@@ -63,7 +63,7 @@ class DecompteRationnaireController extends AbstractController
             return $this->redirectToRoute('decompte_index');
         }
 
-        return $this->renderForm('decompte_rationnaire/mesformations.html.twig', compact('formPromotion')
+        return $this->renderForm('decompte_rationnaire/mespromotions.html.twig', compact('formPromotion')
 
         );
     }
