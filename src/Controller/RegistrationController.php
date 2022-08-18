@@ -23,17 +23,9 @@ class RegistrationController extends AbstractController
         $form->handleRequest($request);
         $user->setPassword('$2y$13$77JKGUeSnDHXgVyBLXkdQeYuoTDOCHMrDltXTBlXeD2XV0/usZWo2');
 
-
-        dump($user);
-
-        if ($form->isSubmitted()) {
-            // encode the plain password
-
-            dump("ok");
+        if ($form->isSubmitted() && $form->isValid()) {
             $entityManager->persist($user);
             $entityManager->flush();
-            // do anything else you need here, like send an email
-
             return $this->redirectToRoute('app_ajouter');
         }
 
