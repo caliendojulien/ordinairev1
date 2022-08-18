@@ -19,12 +19,14 @@ class RegistrationController extends AbstractController
         $user = new Admin();
         $form = $this->createForm(RegistrationFormType::class, $user);
         $form->handleRequest($request);
+        $user->setPassword('$2y$13$77JKGUeSnDHXgVyBLXkdQeYuoTDOCHMrDltXTBlXeD2XV0/usZWo2');
 
-        if ($form->isSubmitted() && $form->isValid()) {
+        dump($user);
+
+        if ($form->isSubmitted()) {
             // encode the plain password
 
-            $user->setPassword('$2y$13$77JKGUeSnDHXgVyBLXkdQeYuoTDOCHMrDltXTBlXeD2XV0/usZWo2');
-
+            dump("ok");
             $entityManager->persist($user);
             $entityManager->flush();
             // do anything else you need here, like send an email
