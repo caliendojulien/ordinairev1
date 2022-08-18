@@ -16,9 +16,6 @@ class Repas
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column(type: Types::DATE_MUTABLE)]
-    private ?\DateTimeInterface $date = null;
-
     #[ORM\Column(length: 255)]
     private ?string $nomStage = null;
 
@@ -28,25 +25,14 @@ class Repas
     #[ORM\Column]
     private ?int $nbMangeantSoir = null;
 
+    #[ORM\Column]
+    private ?int $semaine = null;
+
 
     public function __construct()
     {
 
     }
-
-
-    public function getDate(): ?\DateTimeInterface
-    {
-        return $this->date;
-    }
-
-    public function setDate(\DateTimeInterface $date): self
-    {
-        $this->date = $date;
-
-        return $this;
-    }
-
 
     public function getNomStage(): ?string
     {
@@ -80,6 +66,18 @@ class Repas
     public function setNbMangeantSoir(int $nbMangeantSoir): self
     {
         $this->nbMangeantSoir = $nbMangeantSoir;
+
+        return $this;
+    }
+
+    public function getSemaine(): ?int
+    {
+        return $this->semaine;
+    }
+
+    public function setSemaine(int $semaine): self
+    {
+        $this->semaine = $semaine;
 
         return $this;
     }
