@@ -8,10 +8,9 @@
 {% endblock %}
 
 {% block lienNav %}
-    {% if is_granted("ROLE_ADMIN") %}
+    {% if app.user %}
         <a class="texteNav + animText" href="{{ path('app_ajouter') }}">Ajouter un CDS</a>
     {% else %}
-        <a class="texteNav + animText" href="{{ path('mespromotions_voirPromotions') }}">Ajouter une promotion</a>
     {% endif %}
 {% endblock %}
 
@@ -29,16 +28,11 @@
     <div>
 
     </div>
-    {% for promotion in app.user.promotion %}
-        <div>
-            <a href="{{ path('ajoutDate_dateRepas', {'promo': promotion.id}) }}">{{ promotion.nomPromotion }}</a>
+    <p>{{ promo.nomPromotion }}</p>
 
-        </div>
-    {% else %}
-        <div>
-            <p>Aucune Promo</p>
-        </div>
-    {% endfor %}
+    <p>{{ form(formRepas) }}</p>
+    </div>
+
 
 
     {#

@@ -3,8 +3,10 @@
 namespace App\Controller;
 
 use App\Entity\Promotion;
+use App\Entity\Repas;
 use App\Entity\Stages;
 use App\Form\PromotionType;
+use App\Form\RepasType;
 use App\Repository\AdminRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\Persistence\ManagerRegistry;
@@ -59,7 +61,36 @@ class DecompteRationnaireController extends AbstractController
             return $this->redirectToRoute('decompte_index');
         }
 
-        return $this->renderForm('decompte_rationnaire/mespromotions.html.twig', compact('formPromotion')
+        return $this->renderForm('decompte_rationnaire/mesformations.html.twig', compact('formPromotion')
+
+        );
+    }
+
+    #[Route('/dateRepas/{promo}', name: 'ajoutDate_dateRepas')]
+    public function ajoutDate(
+        Request                $request,
+        EntityManagerInterface $entityManager,
+        Promotion              $promo
+
+    ): Response
+    {
+        $repas = new Repas();
+        $repas->setDate(new \DateTime());
+        $repas->setNbMangeantMidi($promo->getNbStagiaire());
+        $repas->setNbMangeantSoir(0);
+        $formRepas = $this->createForm(RepasType::class, $repas);
+
+        $formRepas->handleRequest($request);
+
+        if ($formRepas->isSubmitted()) {
+            $repas->setNomStage($promo->getNomPromotion());
+
+            $entityManager->persist($repas);
+            $entityManager->flush();
+            return $this->redirectToRoute('decompte_index');
+        }
+
+        return $this->renderForm('decompte_rationnaire/dateRepas.html.twig', compact('formRepas', 'promo')
 
         );
     }
