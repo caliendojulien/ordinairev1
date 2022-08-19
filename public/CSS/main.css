@@ -28,14 +28,6 @@ main {
     align-items: center;
 }
 
-.flechesNumSemaine {
-    height: 25px;
-    background-color: #387796;
-    padding: 10px;
-    border-radius: 10px;
-    margin: 10px;
-}
-
 h3 {
     display: flex;
     justify-content: center;
@@ -51,7 +43,7 @@ h3 {
 
 .promo {
     display: flex;
-    justify-content: start;
+    justify-content: center;
     padding: 15px;
     border-radius: 10px;
     margin: 15px;
@@ -59,7 +51,7 @@ h3 {
     color: #ffffff;
     font-size: 25px;
     background-color: rgba(52, 84, 107, 0.76);
-    width: 800px;
+    width: 280px;
 }
 
 #aucunePromo {
@@ -67,3 +59,32 @@ h3 {
     justify-content: center;
     margin: 20px;
 }
+
+/* date repas */
+
+.fleches {
+    height: 25px;
+    background-color: #387796;
+    padding: 10px;
+    border-radius: 10px;
+    margin: 10px;
+}
+
+#titreNomPromo {
+    display: flex;
+    justify-content: center;
+
+}
+
+h2 {
+    display: flex;
+    justify-content: center;
+    padding: 15px;
+    border-radius: 10px;
+    margin: 15px;
+    text-decoration: none;
+    font-size: 25px;
+    background-color: rgba(52, 84, 107, 0.31);
+    width: 280px;
+}
+

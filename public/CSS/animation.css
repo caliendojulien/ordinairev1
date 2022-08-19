@@ -68,7 +68,7 @@
     border-color: #387796;
 }
 
-.promo:hover, .flechesNumSemaine:hover {
+.promo:hover, .fleches:hover {
     animation: btPromoBackground 0.3s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
 }
 
@@ -80,7 +80,7 @@
     }
 }
 
-.promo:active, .flechesNumSemaine:active {
+.promo:active, .fleches:active {
     animation: 0.3s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
     background-color: #387796;
 }
