@@ -74,7 +74,7 @@ class DecompteRationnaireController extends AbstractController
 
 
         $formRepas->handleRequest($request);
-
+        dump($repas);
         if ($formRepas->isSubmitted()) {
             if ($repas->getNbMangeantMidi() > $promo->getNbStagiaire() || $repas->getNbMangeantSoir() > $promo->getNbStagiaire()) {
                 $this->addFlash('message', "Le nombre de mangeant ne peut pas etre supérieur au nombre d'eleves !⚠️");
