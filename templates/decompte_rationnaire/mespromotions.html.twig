@@ -11,14 +11,65 @@
 {% endblock %}
 
 {% block main %}
-    <div id="titre">
-        <h1>Ajouter un stage :</h1>
+    <div class="gridH1Parent">
+        <div class="gridH1Vide1"></div>
+        <div class="gridH1"><h1 class="h3 mb-3 font-weight-normal">Ajouter un stage</h1></div>
+        <div class="gridH1Vide2"></div>
     </div>
-
-    <div>
-        {{ form(formPromotion) }}
-
-    </div>
+    <form method="post">
+        <div class="formCentre">
+            <div class="gridFormAjoutParent">
+                {{ form_start(formPromotion) }}
+                <div class="gridFormAjout1">
+                    <div class="elementsForm">
+                        {{ form_label(formPromotion.nomPromotion) }}
+                    </div>
+                    <div class="elementsForm">
+                        {{ form_widget(formPromotion.nomPromotion) }}
+                    </div>
+                </div>
+                {#  {{ form_row(registrationForm.plainPassword, {label: 'Password'}) }} #}
+                <div class="gridFormAjout2">
+                    <div class="elementsForm">
+                        {{ form_label(formPromotion.nbStagiaire) }}
+                    </div>
+                    <div class="elementsForm">
+                        {{ form_widget(formPromotion.nbStagiaire) }}
+                    </div>
+                </div>
+                <div class="gridFormAjout3">
+                    <div class="elementsForm">
+                        Stage
+                    </div>
+                    <div class="elementsForm + choixDeroulant">
+                        {{ form_widget(formPromotion.stage) }}
+                    </div>
+                </div>
+                <div class="gridFormAjout4">
+                    <div class="elementsForm">
+                        {{ form_label(formPromotion.dateDebut) }}
+                    </div>
+                    <div class="elementsForm + choixDeroulant">
+                        {{ form_widget(formPromotion.dateDebut) }}
+                    </div>
+                </div>
+                <div class="gridFormAjout5">
+                    <div class="elementsForm">
+                        {{ form_label(formPromotion.dateFin) }}
+                    </div>
+                    <div class="elementsForm + choixDeroulant">
+                        {{ form_widget(formPromotion.dateFin) }}
+                    </div>
+                </div>
+                <div class="gridFormAjout6">
+                    <button class="bouttonValidation" type="submit">
+                        AJOUTER
+                    </button>
+                </div>
+                {{ form_end(formPromotion) }}
+            </div>
+        </div>
+    </form>
 
 
 

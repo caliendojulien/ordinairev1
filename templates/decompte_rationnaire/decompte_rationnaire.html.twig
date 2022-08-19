@@ -19,13 +19,7 @@
         <div class="gridH1Vide2"></div>
     </div>
     <div id="numSemaine">
-        <img class="flechesNumSemaine" src="{{ asset('CSS/media/fleche-gauche-blanche.png') }}" alt="" id="g" onclick="moins()">
-        <div>
-            <h3>Semaine n° <span id="numero">{{ "now" | date('W')+ 2 }}</span></h3>
-        </div>
-        <img class="flechesNumSemaine" src="{{ asset('CSS/media/fleche-droite-blanche.png') }}" alt="" id="d" onclick="plus()">
-    </div>
-    <div>
+        <h3>Semaine n° <span id="numero">{{ "now" | date('W')+ 2 }}</span></h3>
     </div>
     {% for promotion in app.user.promotion %}
         <div class="listePromo">

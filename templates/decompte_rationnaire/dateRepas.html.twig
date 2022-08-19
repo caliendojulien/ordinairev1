@@ -5,54 +5,60 @@
 {% endblock %}
 
 {% block lienNav %}
-    {% if app.user %}
+    {% if is_granted("ROLE_ADMIN") %}
         <a class="texteNav + animText" href="{{ path('app_ajouter') }}">Ajouter un CDS</a>
     {% else %}
+        <a class="texteNav + animText" href="{{ path('mespromotions_voirPromotions') }}">Ajouter une promotion</a>
     {% endif %}
 {% endblock %}
 
 {% block main %}
     <div class="gridH1Parent">
-        <div class="gridH1Vide1"></div>
-        <div class="gridH1"><h1 class="h3 mb-3 font-weight-normal">Décompte rationnaire</h1></div>
+        <div class="gridH1Vide1">
+            <a href="{{ path('decompte_index') }}">
+                <img class="fleches" src="{{ asset('CSS/media/fleche-gauche-blanche.png') }}" alt="Retour">
+            </a>
+        </div>
+        <div class="gridH1">
+            <h1 class="h3 mb-3 font-weight-normal">Décompte rationnaire</h1>
+        </div>
         <div class="gridH1Vide2"></div>
     </div>
-    <div>
-        <p>{{ promo.nomPromotion }}</p>
+    <div id="titreNomPromo">
+        <h2>{{ promo.nomPromotion }}</h2>
     </div>
     <div id="numSemaine">
-        <img class="flechesNumSemaine" src="{{ asset('CSS/media/fleche-gauche-blanche.png') }}" alt="" id="g" onclick="moins()">
-        <div>
-            <h3>Semaine n° <span id="numero">{{ "now" | date('W')+ 2 }}</span></h3>
-        </div>
-        <img class="flechesNumSemaine" src="{{ asset('CSS/media/fleche-droite-blanche.png') }}" alt="" id="d" onclick="plus()">
+        <h3>Semaine n° <span id="numero">{{ "now" | date('W')+ 2 }}</span></h3>
     </div>
-
-    <div class="formCentre">
-        <div class="gridFormDateRParent">
-            {{ form_start(formRepas) }}
-            <div class="gridFormDateR2">
-                <div class="elementsForm">
-                    {{ form_label(formRepas.nbMangeantMidi) }}
+    <form>
+        <div class="formCentre">
+            <div class="gridFormDateRParent">
+                {{ form_start(formRepas) }}
+                <div class="gridFormDateR1">
+                    <div class="elementsForm">
+                        {{ form_label(formRepas.nbMangeantMidi) }}
+                    </div>
+                    <div class="elementsForm">
+                        {{ form_widget(formRepas.nbMangeantMidi) }}
+                    </div>
                 </div>
-                <div class="elementsForm">
-                    {{ form_widget(formRepas.nbMangeantMidi) }}
+                <div class="gridFormDateR2">
+                    <div class="elementsForm">
+                        {{ form_label(formRepas.nbMangeantSoir) }}
+                    </div>
+                    <div class="elementsForm">
+                        {{ form_widget(formRepas.nbMangeantSoir) }}
+                    </div>
                 </div>
+                <div class="gridFormDateR3">
+                    <button class="bouttonValidation" type="submit">
+                        ENVOYER
+                    </button>
+                </div>
+                {{ form_end(formRepas) }}
             </div>
-            <div class="gridFormDateR3">
-                <div>
-                    {{ form_label(formRepas.nbMangeantSoir) }}
-                </div>
-                <div class="elementsForm">
-                    {{ form_widget(formRepas.nbMangeantSoir) }}
-                </div>
-            </div>
-            <div class="gridFormDateR4">
-                <button>Envoyer</button>
-            </div>
-            {{ form_end(formRepas) }}
         </div>
-    </div>
+    </form>
 
 
 

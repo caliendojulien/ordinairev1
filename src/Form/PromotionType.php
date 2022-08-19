@@ -20,8 +20,8 @@ class PromotionType extends AbstractType
             ->add('stage', EntityType::class, ['label' => false, 'multiple' => false, 'expanded' => false, 'choice_label' => 'nom', 'class' => Stages::class])
             ->add('dateDebut', DateType::class)
             ->add('dateFin', DateType::class)
-            ->add('nbStagiaire')
-            ->add('Ajouter', SubmitType::class, ['attr' => ['class' => 'button']]);
+            ->add('nbStagiaire');
+            //->add('Ajouter', SubmitType::class, ['attr' => ['class' => 'button']]);
     }
 
     public function configureOptions(OptionsResolver $resolver): void
