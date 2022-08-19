@@ -22,23 +22,11 @@ class DecompteRationnaireController extends AbstractController
     public function index(): Response
     {
 
-        $Lundi = strtotime('next monday +2 weeks');
-        $LundiPlus = \DateTime::createFromFormat('d/m/Y', $Lundi);
-        $Mardi = strtotime('next monday +2 weeks +1 day');
-        $Mercredi = strtotime('next monday +2 weeks +2 days');
-        $Jeudi = strtotime('next monday +2 weeks +3 days');
-        $Vendredi = strtotime('next monday +2 weeks +4 days');
+        $today = new DateTime();
+        $week = $today->format("W");
 
-        return $this->render('decompte_rationnaire/decompte_rationnaire.html.twig',
-            [
-                'Lundi' => $Lundi,
-                'Mardi' => $Mardi,
-                'Mercredi' => $Mercredi,
-                'Jeudi' => $Jeudi,
-                'Vendredi' => $Vendredi,
-                'LundiPlus' => $LundiPlus
+        return $this->render('decompte_rationnaire/decompte_rationnaire.html.twig', compact('week')
 
-            ]
         );
     }
 
@@ -59,9 +47,11 @@ class DecompteRationnaireController extends AbstractController
         $promo->setCdsPromo($userConnecte);
 
         if ($formPromotion->isSubmitted()) {
+
             $entityManager->persist($promo);
             $entityManager->flush();
             return $this->redirectToRoute('decompte_index');
+
         }
 
         return $this->renderForm('decompte_rationnaire/mespromotions.html.twig', compact('formPromotion')
@@ -69,11 +59,12 @@ class DecompteRationnaireController extends AbstractController
         );
     }
 
-    #[Route('/dateRepas/{promo}', name: 'ajoutDate_dateRepas')]
+    #[Route('/dateRepas/{promo}/{semaine}', name: 'ajoutDate_dateRepas')]
     public function ajoutDate(
         Request                $request,
         EntityManagerInterface $entityManager,
-        Promotion              $promo
+        Promotion              $promo,
+        int                    $semaine
     ): Response
     {
         $repas = new Repas();
@@ -81,21 +72,27 @@ class DecompteRationnaireController extends AbstractController
         $repas->setNbMangeantSoir(0);
         $formRepas = $this->createForm(RepasType::class, $repas);
 
+
         $formRepas->handleRequest($request);
 
         if ($formRepas->isSubmitted()) {
-            $repas->setNomStage($promo->getNomPromotion());
-            $today = new DateTime();
-            $week = $today->format("W");
-            $repas->setSemaine(+$week + 2 % 52);
+            if ($repas->getNbMangeantMidi() > $promo->getNbStagiaire() || $repas->getNbMangeantSoir() > $promo->getNbStagiaire()) {
+                $this->addFlash('message', "Le nombre de mangeant ne peut pas etre supérieur au nombre d'eleves !⚠️");
+                return $this->redirectToRoute('ajoutDate_dateRepas', ['promo' => $promo->getId(), 'semaine' => $semaine]);
+            } else {
+                $repas->setNomStage($promo->getNomPromotion());
+                $repas->setSemaine($semaine);
 
-            $entityManager->persist($repas);
-            $entityManager->flush();
-            return $this->redirectToRoute('decompte_index');
+                $entityManager->persist($repas);
+                $entityManager->flush();
+                return $this->redirectToRoute('decompte_index');
+            }
         }
+        {
 
-        return $this->renderForm('decompte_rationnaire/dateRepas.html.twig', compact('formRepas', 'promo')
-
-        );
+            return $this->renderForm('decompte_rationnaire/dateRepas.html.twig', compact('formRepas', 'promo', 'repas', 'semaine'));
+        }
     }
 }
+
+

@@ -17,15 +17,24 @@
         <div class="gridH1"><h1 class="h3 mb-3 font-weight-normal">Décompte rationnaire</h1></div>
         <div class="gridH1Vide2"></div>
     </div>
+    {% for message in app.flashes('message') %}
+        <div>
+            {{ message }}
+        </div>
+    {% endfor %}
     <div>
         <p>{{ promo.nomPromotion }}</p>
     </div>
     <div id="numSemaine">
-        <img class="flechesNumSemaine" src="{{ asset('CSS/media/fleche-gauche-blanche.png') }}" alt="" id="g" onclick="moins()">
+        <img class="flechesNumSemaine" src="{{ asset('CSS/media/fleche-gauche-blanche.png') }}" alt="" id="g"
+             onclick="moins()">
         <div>
-            <h3>Semaine n° <span id="numero">{{ "now" | date('W')+ 2 }}</span></h3>
+            <h3>Semaine n° <span id="numero">{{ semaine }}</span></h3>
         </div>
-        <img class="flechesNumSemaine" src="{{ asset('CSS/media/fleche-droite-blanche.png') }}" alt="" id="d" onclick="plus()">
+        {% set nextWeek =  semaine + 1 %}
+        <a href="{{ path('ajoutDate_dateRepas', {'promo': promo.id, 'semaine': nextWeek}) }}"><img
+                    class="flechesNumSemaine" src="{{ asset('CSS/media/fleche-droite-blanche.png') }}" alt="" id="d"
+                    onclick="plus()"></a>
     </div>
 
     <div class="formCentre">
