@@ -12,6 +12,7 @@
     margin-top: 15px;
 }
 
+
 input {
     background-color: rgba(217, 217, 217, 0.37);
     border-color: rgba(0, 0, 0, 0.5);
@@ -23,7 +24,8 @@ input {
 .formCentre {
     display: flex;
     justify-content: center;
-    align-content: center;
+
+
 }
 
 /* boutton validation */
@@ -33,6 +35,7 @@ input {
     display: flex;
     justify-content: center;
 }
+
 .bouttonValidation {
     font-size: 15px;
     border-radius: 10px;
@@ -93,31 +96,26 @@ input {
 /* form date repas */
 
 .gridFormDateRParent {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(3, 1fr);
-    grid-column-gap: 0;
-    grid-row-gap: 0;
-    margin: 30px;
-    font-size: 25px;
-    height: 200px;
+    height: 55vh;
 }
 
 .gridFormDateR1 {
-    grid-area: 1 / 1 / 2 / 2;
-    margin-right: 80px;
+    display: flex;
+    flex-direction: column;
 }
 
 .gridFormDateR2 {
-    grid-area: 1 / 2 / 2 / 3;
-    margin-left: 80px;
+    display: flex;
+    flex-direction: column;
+
 }
 
 .gridFormDateR3 {
-    grid-area: 3 / 1 / 4 / 3;
     display: flex;
-    justify-content: center;
-    height: 41px;
+    align-items: center;
+    height: 10px;
+    margin-top: 50px;
+
 }
 
 /* form mes promotions */

@@ -35,45 +35,46 @@
     <div id="numSemaine">
         {% set lastWeek =  semaine - 1 %}
         <a href="{{ path('ajoutDate_dateRepas', {'promo': promo.id, 'semaine': lastWeek}) }}"><img
-                    class="flechesNumSemaine" src="{{ asset('CSS/media/fleche-gauche-blanche.png') }}" alt="" id="g"
+                    class="fleches" src="{{ asset('CSS/media/fleche-gauche-blanche.png') }}" alt="" id="g"
                     onclick="moins()"></a>
         <div>
             <h3>Semaine n° <span id="numero">{{ semaine }}</span></h3>
         </div>
         {% set nextWeek =  semaine + 1 %}
         <a href="{{ path('ajoutDate_dateRepas', {'promo': promo.id, 'semaine': nextWeek}) }}"><img
-                    class="flechesNumSemaine" src="{{ asset('CSS/media/fleche-droite-blanche.png') }}" alt="" id="d"
+                    class="fleches" src="{{ asset('CSS/media/fleche-droite-blanche.png') }}" alt="" id="d"
                     onclick="plus()"></a>
     </div>
-    <form>
-        <div class="formCentre">
-            <div class="gridFormDateRParent">
-                {{ form_start(formRepas) }}
-                <div class="gridFormDateR1">
-                    <div class="elementsForm">
-                        {{ form_label(formRepas.nbMangeantMidi) }}
-                    </div>
-                    <div class="elementsForm">
-                        {{ form_widget(formRepas.nbMangeantMidi) }}
-                    </div>
+
+    <div class="formCentre">
+        <div class="gridFormDateRParent">
+            {{ form_start(formRepas) }}
+            <div class="gridFormDateR1">
+                <div class="elementsForm">
+                    {{ form_label(formRepas.nbMangeantMidi) }}
                 </div>
-                <div class="gridFormDateR2">
-                    <div class="elementsForm">
-                        {{ form_label(formRepas.nbMangeantSoir) }}
-                    </div>
-                    <div class="elementsForm">
-                        {{ form_widget(formRepas.nbMangeantSoir) }}
-                    </div>
+                <div class="elementsForm">
+                    {{ form_widget(formRepas.nbMangeantMidi) }}
                 </div>
-                <div class="gridFormDateR3">
-                    <button class="bouttonValidation" type="submit">
-                        ENVOYER
-                    </button>
-                </div>
-                {{ form_end(formRepas) }}
             </div>
+            <div class="gridFormDateR2">
+                <div class="elementsForm">
+                    {{ form_label(formRepas.nbMangeantSoir) }}
+                </div>
+                <div class="elementsForm">
+                    {{ form_widget(formRepas.nbMangeantSoir) }}
+                </div>
+
+            </div>
+            <div class="gridFormDateR3">
+                <button class="bouttonValidation" type="submit">
+                    ENVOYER
+                </button>
+            </div>
+
+            {{ form_end(formRepas) }}
         </div>
-    </form>
+    </div>
 
 
 
