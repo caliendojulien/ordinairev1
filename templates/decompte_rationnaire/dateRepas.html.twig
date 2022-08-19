@@ -26,8 +26,10 @@
         <p>{{ promo.nomPromotion }}</p>
     </div>
     <div id="numSemaine">
-        <img class="flechesNumSemaine" src="{{ asset('CSS/media/fleche-gauche-blanche.png') }}" alt="" id="g"
-             onclick="moins()">
+        {% set lastWeek =  semaine - 1 %}
+        <a href="{{ path('ajoutDate_dateRepas', {'promo': promo.id, 'semaine': lastWeek}) }}"><img
+                    class="flechesNumSemaine" src="{{ asset('CSS/media/fleche-gauche-blanche.png') }}" alt="" id="g"
+                    onclick="moins()"></a>
         <div>
             <h3>Semaine n° <span id="numero">{{ semaine }}</span></h3>
         </div>
