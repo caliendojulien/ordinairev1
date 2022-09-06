@@ -18,7 +18,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class DecompteRationnaireController extends AbstractController
 {
-    #[Route('/decompte', name: 'decompte_index')]
+    #[Route('/decompte', name: 'index_decompte')]
     public function index(): Response
     {
 
@@ -50,7 +50,7 @@ class DecompteRationnaireController extends AbstractController
 
             $entityManager->persist($promo);
             $entityManager->flush();
-            return $this->redirectToRoute('decompte_index');
+            return $this->redirectToRoute('index_decompte');
 
         }
 
@@ -74,7 +74,7 @@ class DecompteRationnaireController extends AbstractController
 
 
         $formRepas->handleRequest($request);
-        dump($repas);
+
         if ($formRepas->isSubmitted()) {
             if ($repas->getNbMangeantMidi() > $promo->getNbStagiaire() || $repas->getNbMangeantSoir() > $promo->getNbStagiaire()) {
                 $this->addFlash('message', "Le nombre de mangeant ne peut pas etre supérieur au nombre d'eleves !⚠️");
@@ -85,7 +85,7 @@ class DecompteRationnaireController extends AbstractController
 
                 $entityManager->persist($repas);
                 $entityManager->flush();
-                return $this->redirectToRoute('decompte_index');
+                return $this->redirectToRoute('index_decompte');
             }
         }
         {

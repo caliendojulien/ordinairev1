@@ -24,7 +24,7 @@ class Admin implements UserInterface, PasswordAuthenticatedUserInterface
     private ?string $email = null;
 
     #[ORM\Column]
-    private array $roles = [];
+    private array $roles = ["ROLE_USER"];
 
     /**
      * @var string The hashed password
@@ -200,7 +200,6 @@ class Admin implements UserInterface, PasswordAuthenticatedUserInterface
 
         return $this;
     }
-
 
 
 }

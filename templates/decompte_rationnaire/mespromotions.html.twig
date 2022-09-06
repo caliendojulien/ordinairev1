@@ -1,12 +1,12 @@
 {% extends 'base.html.twig' %}
 
 {% block js %}
-    <script src="{{ asset('JS/decompteRationnaire.js') }}"></script>
+
 {% endblock %}
 
 {% block lienNav %}
     {% if app.user %}
-        <a class="texteNav + animText" href="{{ path('decompte_index') }}">Décompte rationnaire</a>
+        <a class="texteNav + animText" href="{{ path('index_decompte') }}">Décompte rationnaire</a>
     {% endif %}
 {% endblock %}
 
