@@ -1,7 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block js %}
-    <script src="{{ asset('JS/decompteRationnaire.js') }}"></script>
+
 {% endblock %}
 
 {% block lienNav %}
@@ -15,7 +15,7 @@
 {% block main %}
     <div class="gridH1Parent">
         <div class="gridH1Vide1">
-            <a href="{{ path('decompte_index') }}">
+            <a href="{{ path('index_decompte') }}">
                 <img class="fleches" src="{{ asset('CSS/media/fleche-gauche-blanche.png') }}" alt="Retour">
             </a>
         </div>
